@@ -63,7 +63,10 @@ column-gap:22px;
 
 .logo img{
 height:52px;
+display:block;
 }
+
+/* =================== NAV =================== */
 
 .nav{
 display:flex;
@@ -105,8 +108,6 @@ transition:.2s;
 transform:scale(1.15);
 opacity:1;
 }
-
-/* ВСЕГДА БЕЛЫЕ ИКОНКИ */
 
 .telegram{
 background-image:url('Icons/Telegram_White.svg');
@@ -165,10 +166,26 @@ transform:translateX(20px);
 background-image:url('Icons/Dark.svg');
 }
 
-/* =================== САМЫЕ ГОРЯЧИЕ НОВОСТИ =================== */
+/* =================== ГЛАВНЫЕ НОВОСТИ =================== */
 
 .top-news{
 margin:32px 0 28px;
+}
+
+.top-news-layout{
+display:flex;
+gap:40px;
+align-items:flex-start;
+}
+
+.top-news-left{
+flex:1;
+min-width:0;
+}
+
+.top-news-sidebar{
+width:280px;
+flex-shrink:0;
 }
 
 .top-news-header{
@@ -179,6 +196,32 @@ margin-bottom:18px;
 font-size:28px;
 font-weight:700;
 color:var(--text-color);
+}
+
+.top-news-sidebar h3{
+font-size:20px;
+font-weight:700;
+margin-bottom:16px;
+color:var(--text-color);
+}
+
+.top-news-sidebar ul{
+list-style:none;
+}
+
+.top-news-sidebar li{
+margin-bottom:12px;
+}
+
+.top-news-sidebar a{
+text-decoration:none;
+color:var(--text-color);
+font-weight:500;
+transition:.2s;
+}
+
+.top-news-sidebar a:hover{
+color:var(--link-hover);
 }
 
 .top-news-slider{
@@ -245,11 +288,12 @@ opacity:.85;
 transform:scale(1.05);
 }
 
-/* =================== СЕТКА =================== */
+/* =================== ОСНОВНАЯ СЕТКА =================== */
 
 .content-grid{
 display:flex;
 gap:44px;
+align-items:flex-start;
 }
 
 .news-feed{
@@ -261,6 +305,7 @@ gap:34px;
 
 .news-card img{
 width:100%;
+display:block;
 margin-bottom:10px;
 border-radius:6px;
 }
@@ -278,6 +323,12 @@ font-size:15px;
 
 .sidebar{
 width:280px;
+flex-shrink:0;
+}
+
+.sidebar h4{
+margin-bottom:12px;
+color:var(--text-color);
 }
 
 .sidebar ul{
@@ -295,6 +346,28 @@ text-decoration:none;
 
 .sidebar a:hover{
 color:var(--link-hover);
+}
+
+/* =================== ADS =================== */
+
+.ads{
+width:100%;
+max-width:300px;
+margin-left:auto;
+margin-right:auto;
+}
+
+.ads h4{
+margin-bottom:12px;
+}
+
+.ads img{
+display:block;
+width:100%;
+max-width:300px;
+aspect-ratio:6 / 5;
+object-fit:cover;
+border-radius:8px;
 }
 
 /* =================== FOOTER =================== */
@@ -381,6 +454,14 @@ flex-wrap:wrap;
 justify-content:flex-start;
 }
 
+.top-news-layout{
+flex-direction:column;
+}
+
+.top-news-sidebar{
+width:100%;
+}
+
 .content-grid{
 flex-direction:column;
 }
@@ -393,9 +474,18 @@ grid-template-columns:repeat(2,1fr);
 width:100%;
 }
 
+.ads{
+max-width:300px;
+margin-left:0;
+}
+
 }
 
 @media(max-width:700px){
+
+.container{
+padding:0 20px;
+}
 
 .news-feed{
 grid-template-columns:1fr;
@@ -430,6 +520,15 @@ font-size:15px;
 width:36px;
 height:36px;
 font-size:18px;
+}
+
+.ads{
+max-width:100%;
+}
+
+.ads img{
+max-width:100%;
+height:auto;
 }
 
 }
