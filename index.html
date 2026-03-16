@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/Icons/Logo_Min.png" type="image/png" />
+    <link rel="icon" href="Icons/Logo_Min.png" type="image/png" />
     <title>Дайджест — Новости Узбекистана</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -12,12 +12,12 @@
     <header class="header">
       <div class="container header-container">
         <div class="logo">
-          <a href="index.html">
+          <a href="index.html" aria-label="Дайджест — на главную">
             <img src="New_Logo.png" alt="Дайджест Logo" />
           </a>
         </div>
 
-        <nav class="nav" id="navMenu">
+        <nav class="nav" id="navMenu" aria-label="Основная навигация">
           <a href="#">Узбекистан</a>
           <a href="#">Мир</a>
           <a href="#">Авто</a>
@@ -26,41 +26,52 @@
           <a href="#">Экономика</a>
         </nav>
 
-        <div class="socials">
+        <div class="socials" aria-label="Социальные сети">
           <a
             href="https://t.me/+rI4mVrzYphxkZGYy"
             class="social telegram"
             aria-label="Telegram"
             target="_blank"
+            rel="noopener noreferrer"
           ></a>
           <a
             href="https://www.instagram.com/digest.uzbekistan/"
             class="social instagram"
             aria-label="Instagram"
             target="_blank"
+            rel="noopener noreferrer"
           ></a>
           <a
             href="https://www.tiktok.com/@digest.uzbekistan"
             class="social tiktok"
             aria-label="TikTok"
             target="_blank"
+            rel="noopener noreferrer"
           ></a>
           <a
             href="https://www.youtube.com/@digest.uzbekistan"
             class="social youtube"
             aria-label="YouTube"
             target="_blank"
+            rel="noopener noreferrer"
           ></a>
         </div>
 
         <div class="theme-switch-wrapper">
-          <label class="theme-switch">
+          <label class="theme-switch" aria-label="Переключить тему">
             <input type="checkbox" id="theme-toggle" />
             <span class="slider"></span>
           </label>
         </div>
 
-        <button class="burger" id="burgerBtn" aria-label="Открыть меню">
+        <button
+          class="burger"
+          id="burgerBtn"
+          type="button"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+          aria-controls="navMenu"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -80,6 +91,7 @@
               <button
                 class="slider-btn prev"
                 id="topNewsPrev"
+                type="button"
                 aria-label="Предыдущая новость"
               >
                 &#10094;
@@ -89,8 +101,8 @@
                 <div class="top-news-track" id="topNewsTrack">
                   <article class="top-slide">
                     <img
-                      src="/Photos-for-Site/photo_2026-03-16_11-35-13.jpg"
-                      alt="Новость"
+                      src="Photos-for-Site/photo_2026-03-16_11-35-13.jpg"
+                      alt="Небо над Дубаем закрыто: самолёты разворачивают обратно в Ташкент из-за атаки дронов"
                     />
                     <div class="top-slide-overlay">
                       <h3>
@@ -102,8 +114,8 @@
 
                   <article class="top-slide">
                     <img
-                      src="/Photos-for-Site/photo_2026-03-16_11-58-02.jpg"
-                      alt="Новость"
+                      src="Photos-for-Site/photo_2026-03-16_11-58-02.jpg"
+                      alt="В Узбекистане на этой неделе потеплеет до +20°C"
                     />
                     <div class="top-slide-overlay">
                       <h3>
@@ -115,8 +127,8 @@
 
                   <article class="top-slide">
                     <img
-                      src="/Photos-for-Site/photo_2026-03-16_13-50-12.jpg"
-                      alt="Новость"
+                      src="Photos-for-Site/photo_2026-03-16_13-50-12.jpg"
+                      alt="С 16 марта лимит на газ резко сократился"
                     />
                     <div class="top-slide-overlay">
                       <h3>
@@ -131,6 +143,7 @@
               <button
                 class="slider-btn next"
                 id="topNewsNext"
+                type="button"
                 aria-label="Следующая новость"
               >
                 &#10095;
@@ -140,16 +153,19 @@
             <div class="top-news-dots" id="topNewsDots">
               <button
                 class="top-news-dot active"
+                type="button"
                 data-slide="0"
                 aria-label="Перейти к первой новости"
               ></button>
               <button
                 class="top-news-dot"
+                type="button"
                 data-slide="1"
                 aria-label="Перейти ко второй новости"
               ></button>
               <button
                 class="top-news-dot"
+                type="button"
                 data-slide="2"
                 aria-label="Перейти к третьей новости"
               ></button>
@@ -233,8 +249,8 @@
           <section class="news-feed">
             <article class="news-card">
               <img
-                src="/Photos-for-Site/file_69b7ecdda2a38_avif.avif"
-                alt="Новость"
+                src="Photos-for-Site/file_69b7ecdda2a38_avif.avif"
+                alt="В Фергане осужден узбекистанец, воевавший в Украине на стороне России"
               />
               <h3>
                 В Фергане осужден узбекистанец, воевавший в Украине на стороне
@@ -248,8 +264,8 @@
 
             <article class="news-card">
               <img
-                src="/Photos-for-Site/file_69b7e2a2c8865_avif.avif"
-                alt="Новость"
+                src="Photos-for-Site/file_69b7e2a2c8865_avif.avif"
+                alt="В Джизаке задержан сотрудник Департамента по экономическим преступлениям"
               />
               <h3>
                 В Джизаке задержан сотрудник Департамента по экономическим
@@ -263,8 +279,8 @@
 
             <article class="news-card">
               <img
-                src="/Photos-for-Site/photo_2026-03-16_17-10-58.jpg"
-                alt="Новость"
+                src="Photos-for-Site/photo_2026-03-16_17-10-58.jpg"
+                alt="На Дархане горят знаменитые 19-этажные высотки"
               />
               <h3>
                 Прямо сейчас на Дархане горят знаменитые 19-этажные высотки
@@ -277,8 +293,8 @@
 
             <article class="news-card">
               <img
-                src="/Photos-for-Site/photo_2026-03-16_17-24-06.jpg"
-                alt="Новость"
+                src="Photos-for-Site/photo_2026-03-16_17-24-06.jpg"
+                alt="Лучшие дерматологи Ташкента: кого чаще всего хвалят пациенты"
               />
               <h3>
                 Лучшие дерматологи Ташкента: кого чаще всего хвалят пациенты
@@ -291,8 +307,8 @@
 
             <article class="news-card">
               <img
-                src="/Photos-for-Site/photo_2026-03-15_13-43-45.jpg"
-                alt="Новость"
+                src="Photos-for-Site/photo_2026-03-15_13-43-45.jpg"
+                alt="В Tashkent City заметили дым над новым ТЦ Park In Mall"
               />
               <h3>В Tashkent City заметили дым над новым ТЦ Park In Mall</h3>
               <p>
@@ -303,8 +319,8 @@
 
             <article class="news-card">
               <img
-                src="/Photos-for-Site/photo_2026-03-15_04-50-32.jpg"
-                alt="Новость"
+                src="Photos-for-Site/photo_2026-03-15_04-50-32.jpg"
+                alt="С 1 апреля в Узбекистане начнут отказываться от наличных"
               />
               <h3>
                 Официально: с 1 апреля в Узбекистане начнут отказываться от
@@ -318,7 +334,7 @@
         <aside class="sidebar">
           <div class="ads">
             <h4>Реклама</h4>
-            <img src="/AdPlaceholder2.jpg" alt="Реклама" />
+            <img src="AdPlaceholder2.jpg" alt="Реклама" />
           </div>
         </aside>
       </div>
@@ -328,10 +344,20 @@
           <h2>Видео</h2>
 
           <div class="reels-controls">
-            <button class="reels-btn prev" id="reelsPrev" aria-label="Назад">
+            <button
+              class="reels-btn prev"
+              id="reelsPrev"
+              type="button"
+              aria-label="Назад"
+            >
               &#10094;
             </button>
-            <button class="reels-btn next" id="reelsNext" aria-label="Вперёд">
+            <button
+              class="reels-btn next"
+              id="reelsNext"
+              type="button"
+              aria-label="Вперёд"
+            >
               &#10095;
             </button>
           </div>
@@ -349,7 +375,7 @@
                 >
                   <span class="reels-card-image">
                     <img
-                      src="/Reels/Darhan.png"
+                      src="Reels/Darhan.png"
                       alt="Видео Digest"
                       loading="lazy"
                     />
@@ -361,7 +387,7 @@
                   class="reels-card-link"
                   href="https://www.instagram.com/digest.uzbekistan/"
                   target="_blank"
-                  rel="noopener nofollow"
+                  rel="noopener noreferrer nofollow"
                   aria-label="Открыть видео в Instagram"
                 >
                   Instagram
@@ -379,7 +405,7 @@
                 >
                   <span class="reels-card-image">
                     <img
-                      src="/Reels/Gaz.png"
+                      src="Reels/Gaz.png"
                       alt="Видео Digest"
                       loading="lazy"
                     />
@@ -391,7 +417,7 @@
                   class="reels-card-link"
                   href="https://www.instagram.com/digest.uzbekistan/"
                   target="_blank"
-                  rel="noopener nofollow"
+                  rel="noopener noreferrer nofollow"
                   aria-label="Открыть видео в Instagram"
                 >
                   Instagram
@@ -409,7 +435,7 @@
                 >
                   <span class="reels-card-image">
                     <img
-                      src="/Reels/Most.png"
+                      src="Reels/Most.png"
                       alt="Видео Digest"
                       loading="lazy"
                     />
@@ -421,7 +447,7 @@
                   class="reels-card-link"
                   href="https://www.instagram.com/digest.uzbekistan/"
                   target="_blank"
-                  rel="noopener nofollow"
+                  rel="noopener noreferrer nofollow"
                   aria-label="Открыть видео в Instagram"
                 >
                   Instagram
@@ -439,7 +465,7 @@
                 >
                   <span class="reels-card-image">
                     <img
-                      src="/Reels/Pagani.png"
+                      src="Reels/Pagani.png"
                       alt="Видео Digest"
                       loading="lazy"
                     />
@@ -451,7 +477,7 @@
                   class="reels-card-link"
                   href="https://www.instagram.com/digest.uzbekistan/"
                   target="_blank"
-                  rel="noopener nofollow"
+                  rel="noopener noreferrer nofollow"
                   aria-label="Открыть видео в Instagram"
                 >
                   Instagram
@@ -469,7 +495,7 @@
                 >
                   <span class="reels-card-image">
                     <img
-                      src="/Reels/Pozhar.jpg"
+                      src="Reels/Pozhar.jpg"
                       alt="Видео Digest"
                       loading="lazy"
                     />
@@ -481,7 +507,7 @@
                   class="reels-card-link"
                   href="https://www.instagram.com/digest.uzbekistan/"
                   target="_blank"
-                  rel="noopener nofollow"
+                  rel="noopener noreferrer nofollow"
                   aria-label="Открыть видео в Instagram"
                 >
                   Instagram
@@ -494,7 +520,7 @@
                 class="reels-more-card"
                 href="https://www.instagram.com/digest.uzbekistan/"
                 target="_blank"
-                rel="noopener nofollow"
+                rel="noopener noreferrer nofollow"
                 aria-label="Смотреть все видео в Instagram"
               >
                 <span>Смотреть все видео</span>
@@ -510,7 +536,7 @@
       <div class="container footer-container">
         <p>&copy; 2026 Дайджест. Все права защищены.</p>
 
-        <nav class="footer-nav">
+        <nav class="footer-nav" aria-label="Навигация в подвале">
           <a href="#">Политика конфиденциальности</a>
           <a href="#">Контакты</a>
         </nav>
@@ -520,24 +546,28 @@
             href="https://t.me/+rI4mVrzYphxkZGYy"
             class="footer-social telegram"
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="Telegram"
           ></a>
           <a
             href="https://www.instagram.com/digest.uzbekistan/"
             class="footer-social instagram"
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="Instagram"
           ></a>
           <a
             href="https://www.tiktok.com/@digest.uzbekistan"
             class="footer-social tiktok"
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="TikTok"
           ></a>
           <a
             href="https://www.youtube.com/@digest.uzbekistan"
             class="footer-social youtube"
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="YouTube"
           ></a>
         </div>
@@ -556,6 +586,7 @@
         <button
           class="reels-modal-close"
           id="reelsModalClose"
+          type="button"
           aria-label="Закрыть"
         >
           ✕
@@ -565,6 +596,7 @@
           <iframe
             id="reelsModalFrame"
             src=""
+            title="Видео"
             allowfullscreen
             loading="lazy"
           ></iframe>
