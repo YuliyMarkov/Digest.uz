@@ -1,214 +1,577 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="/Icons/Logo_Min.png" type="image/png">
-<title>Дайджест — Новости Узбекистана</title>
-<link rel="stylesheet" href="style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/Icons/Logo_Min.png" type="image/png" />
+    <title>Дайджест — Новости Узбекистана</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
+  <body>
+    <header class="header">
+      <div class="container header-container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="New_Logo.png" alt="Дайджест Logo" />
+          </a>
+        </div>
 
-<header class="header">
-<div class="container header-container">
+        <nav class="nav" id="navMenu">
+          <a href="#">Узбекистан</a>
+          <a href="#">Мир</a>
+          <a href="#">Авто</a>
+          <a href="#">Происшествия</a>
+          <a href="#">Наука</a>
+          <a href="#">Экономика</a>
+        </nav>
 
-<div class="logo">
-<a href="index.html">
-<img src="New_Logo.png" alt="Дайджест Logo">
-</a>
-</div>
+        <div class="socials">
+          <a
+            href="https://t.me/+rI4mVrzYphxkZGYy"
+            class="social telegram"
+            aria-label="Telegram"
+            target="_blank"
+          ></a>
+          <a
+            href="https://www.instagram.com/digest.uzbekistan/"
+            class="social instagram"
+            aria-label="Instagram"
+            target="_blank"
+          ></a>
+          <a
+            href="https://www.tiktok.com/@digest.uzbekistan"
+            class="social tiktok"
+            aria-label="TikTok"
+            target="_blank"
+          ></a>
+          <a
+            href="https://www.youtube.com/@digest.uzbekistan"
+            class="social youtube"
+            aria-label="YouTube"
+            target="_blank"
+          ></a>
+        </div>
 
-<nav class="nav">
-<a href="#">Узбекистан</a>
-<a href="#">Мир</a>
-<a href="#">Авто</a>
-<a href="#">Происшествия</a>
-<a href="#">Наука</a>
-<a href="#">Экономика</a>
-</nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch">
+            <input type="checkbox" id="theme-toggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
 
-<div class="socials">
-<a href="https://t.me/+rI4mVrzYphxkZGYy" class="social telegram" aria-label="Telegram" target="_blank"></a>
-<a href="https://www.instagram.com/digest.uzbekistan/" class="social instagram" aria-label="Instagram" target="_blank"></a>
-<a href="https://www.tiktok.com/@digest.uzbekistan" class="social tiktok" aria-label="TikTok" target="_blank"></a>
-<a href="https://www.youtube.com/@digest.uzbekistan" class="social youtube" aria-label="YouTube" target="_blank"></a>
-</div>
+        <button class="burger" id="burgerBtn" aria-label="Открыть меню">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
 
-<div class="theme-switch-wrapper">
-<label class="theme-switch">
-<input type="checkbox" id="theme-toggle">
-<span class="slider"></span>
-</label>
-</div>
+    <main class="main container">
+      <section class="top-news">
+        <div class="top-news-layout">
+          <div class="top-news-left">
+            <div class="top-news-header">
+              <h2>Главные новости</h2>
+            </div>
 
-</div>
-</header>
+            <div class="top-news-slider">
+              <button
+                class="slider-btn prev"
+                id="topNewsPrev"
+                aria-label="Предыдущая новость"
+              >
+                &#10094;
+              </button>
 
-<main class="main container">
+              <div class="top-news-viewport">
+                <div class="top-news-track" id="topNewsTrack">
+                  <article class="top-slide">
+                    <img
+                      src="/Photos-for-Site/photo_2026-03-16_11-35-13.jpg"
+                      alt="Новость"
+                    />
+                    <div class="top-slide-overlay">
+                      <h3>
+                        Небо над Дубаем закрыто: самолёты разворачивают обратно
+                        в Ташкент из-за атаки дронов
+                      </h3>
+                    </div>
+                  </article>
 
-<section class="top-news">
+                  <article class="top-slide">
+                    <img
+                      src="/Photos-for-Site/photo_2026-03-16_11-58-02.jpg"
+                      alt="Новость"
+                    />
+                    <div class="top-slide-overlay">
+                      <h3>
+                        Готовьте футболки и кепки: в Узбекистане на этой неделе
+                        потеплеет до +20°C
+                      </h3>
+                    </div>
+                  </article>
 
-<div class="top-news-layout">
+                  <article class="top-slide">
+                    <img
+                      src="/Photos-for-Site/photo_2026-03-16_13-50-12.jpg"
+                      alt="Новость"
+                    />
+                    <div class="top-slide-overlay">
+                      <h3>
+                        Конец газовой «поблажки»: с 16 марта лимит на газ резко
+                        сократился
+                      </h3>
+                    </div>
+                  </article>
+                </div>
+              </div>
 
-<div class="top-news-left">
+              <button
+                class="slider-btn next"
+                id="topNewsNext"
+                aria-label="Следующая новость"
+              >
+                &#10095;
+              </button>
+            </div>
 
-<div class="top-news-header">
-<h2>Главные новости</h2>
-</div>
+            <div class="top-news-dots" id="topNewsDots">
+              <button
+                class="top-news-dot active"
+                data-slide="0"
+                aria-label="Перейти к первой новости"
+              ></button>
+              <button
+                class="top-news-dot"
+                data-slide="1"
+                aria-label="Перейти ко второй новости"
+              ></button>
+              <button
+                class="top-news-dot"
+                data-slide="2"
+                aria-label="Перейти к третьей новости"
+              ></button>
+            </div>
+          </div>
 
-<div class="top-news-slider">
+          <aside class="top-news-sidebar">
+            <h3>Последние новости</h3>
 
-<button class="slider-btn prev" id="topNewsPrev">&#10094;</button>
+            <div class="latest-news-box">
+              <ul>
+                <li>
+                  <a href="#"
+                    >Небо над Дубаем временно закрыли для части рейсов после
+                    атаки дронов</a
+                  >
+                </li>
+                <li>
+                  <a href="#"
+                    >В Узбекистане на этой неделе ожидается потепление до
+                    +20°C</a
+                  >
+                </li>
+                <li>
+                  <a href="#"
+                    >С 16 марта лимит на газ в стране заметно сократился</a
+                  >
+                </li>
+                <li>
+                  <a href="#"
+                    >В Ташкенте усилили контроль за дорожным движением в центре
+                    города</a
+                  >
+                </li>
+                <li>
+                  <a href="#"
+                    >Узгидромет предупредил о переменчивой погоде в нескольких
+                    регионах</a
+                  >
+                </li>
+                <li>
+                  <a href="#"
+                    >Новый жилой комплекс в столице вызвал споры среди жителей
+                    района</a
+                  >
+                </li>
+                <li>
+                  <a href="#"
+                    >В аэропорту Ташкента изменили расписание нескольких
+                    международных рейсов</a
+                  >
+                </li>
+                <li>
+                  <a href="#"
+                    >Спрос на электромобили в Узбекистане продолжает расти</a
+                  >
+                </li>
+                <li>
+                  <a href="#"
+                    >Власти анонсировали новые меры по модернизации городской
+                    инфраструктуры</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
 
-<div class="top-news-viewport">
+      <div class="content-grid">
+        <section class="news-feed-section">
+          <div class="news-feed-header">
+            <h2>Новости Узбекистана</h2>
 
-<div class="top-news-track" id="topNewsTrack">
+            <a href="#" class="news-more">
+              Смотреть ещё
+              <span class="arrow">→</span>
+            </a>
+          </div>
 
-<article class="top-slide">
-<img src="https://via.placeholder.com/800x400" alt="Новость">
-<h3>Горячая новость 1</h3>
-<p>Краткое описание первой горячей новости.</p>
-</article>
+          <section class="news-feed">
+            <article class="news-card">
+              <img
+                src="/Photos-for-Site/file_69b7ecdda2a38_avif.avif"
+                alt="Новость"
+              />
+              <h3>
+                В Фергане осужден узбекистанец, воевавший в Украине на стороне
+                России
+              </h3>
+              <p>
+                На суде мужчина рассказал, что поехал в РФ на заработки и
+                подписал документы, не понимая их содержания.
+              </p>
+            </article>
 
-<article class="top-slide">
-<img src="https://via.placeholder.com/800x400" alt="Новость">
-<h3>Горячая новость 2</h3>
-<p>Краткое описание второй горячей новости.</p>
-</article>
+            <article class="news-card">
+              <img
+                src="/Photos-for-Site/file_69b7e2a2c8865_avif.avif"
+                alt="Новость"
+              />
+              <h3>
+                В Джизаке задержан сотрудник Департамента по экономическим
+                преступлениям
+              </h3>
+              <p>
+                Он вместе с директором одной из школ планировал закупить
+                интерактивные доски почти вдвое дороже их реальной стоимости.
+              </p>
+            </article>
 
-<article class="top-slide">
-<img src="https://via.placeholder.com/800x400" alt="Новость">
-<h3>Горячая новость 3</h3>
-<p>Краткое описание третьей горячей новости.</p>
-</article>
+            <article class="news-card">
+              <img
+                src="/Photos-for-Site/photo_2026-03-16_17-10-58.jpg"
+                alt="Новость"
+              />
+              <h3>
+                Прямо сейчас на Дархане горят знаменитые 19-этажные высотки
+              </h3>
+              <p>
+                В Ташкенте, в доме рядом со станцией метро «Хамида Алимджана»,
+                произошло сильное возгорание.
+              </p>
+            </article>
 
-</div>
+            <article class="news-card">
+              <img
+                src="/Photos-for-Site/photo_2026-03-16_17-24-06.jpg"
+                alt="Новость"
+              />
+              <h3>
+                Лучшие дерматологи Ташкента: кого чаще всего хвалят пациенты
+              </h3>
+              <p>
+                По обсуждениям участников "Потребитель уз" больше всего
+                положительных отзывов получили 11 дерматологов:
+              </p>
+            </article>
 
-</div>
+            <article class="news-card">
+              <img
+                src="/Photos-for-Site/photo_2026-03-15_13-43-45.jpg"
+                alt="Новость"
+              />
+              <h3>В Tashkent City заметили дым над новым ТЦ Park In Mall</h3>
+              <p>
+                По словам очевидцев, прямо сейчас над торговым центром Park In
+                Mall в Tashkent City поднимается густой дым.
+              </p>
+            </article>
 
-<button class="slider-btn next" id="topNewsNext">&#10095;</button>
+            <article class="news-card">
+              <img
+                src="/Photos-for-Site/photo_2026-03-15_04-50-32.jpg"
+                alt="Новость"
+              />
+              <h3>
+                Официально: с 1 апреля в Узбекистане начнут отказываться от
+                наличных
+              </h3>
+              <p>Многие платежи перейдут на карты</p>
+            </article>
+          </section>
+        </section>
 
-</div>
+        <aside class="sidebar">
+          <div class="ads">
+            <h4>Реклама</h4>
+            <img src="/AdPlaceholder2.jpg" alt="Реклама" />
+          </div>
+        </aside>
+      </div>
 
-</div>
+      <section class="reels-section">
+        <div class="reels-header">
+          <h2>Видео</h2>
 
-<aside class="top-news-sidebar">
+          <div class="reels-controls">
+            <button class="reels-btn prev" id="reelsPrev" aria-label="Назад">
+              &#10094;
+            </button>
+            <button class="reels-btn next" id="reelsNext" aria-label="Вперёд">
+              &#10095;
+            </button>
+          </div>
+        </div>
 
-<h3>Последние новости</h3>
+        <div class="reels-viewport" id="reelsViewport">
+          <ul class="reels-track" id="reelsTrack">
+            <li class="reels-list-item">
+              <div class="reels-card">
+                <button
+                  class="reels-card-preview"
+                  type="button"
+                  data-video="https://www.instagram.com/p/DV8gBEZAux0/embed"
+                  aria-label="Смотреть видео"
+                >
+                  <span class="reels-card-image">
+                    <img
+                      src="/Reels/Darhan.png"
+                      alt="Видео Digest"
+                      loading="lazy"
+                    />
+                  </span>
+                  <span class="reels-card-play">▶</span>
+                </button>
 
-<ul>
-<li><a href="#">Новость A</a></li>
-<li><a href="#">Новость B</a></li>
-<li><a href="#">Новость C</a></li>
-<li><a href="#">Новость D</a></li>
-</ul>
+                <a
+                  class="reels-card-link"
+                  href="https://www.instagram.com/digest.uzbekistan/"
+                  target="_blank"
+                  rel="noopener nofollow"
+                  aria-label="Открыть видео в Instagram"
+                >
+                  Instagram
+                </a>
+              </div>
+            </li>
 
-</aside>
+            <li class="reels-list-item">
+              <div class="reels-card">
+                <button
+                  class="reels-card-preview"
+                  type="button"
+                  data-video="https://www.instagram.com/p/DV8XmoIgmVh/embed"
+                  aria-label="Смотреть видео"
+                >
+                  <span class="reels-card-image">
+                    <img
+                      src="/Reels/Gaz.png"
+                      alt="Видео Digest"
+                      loading="lazy"
+                    />
+                  </span>
+                  <span class="reels-card-play">▶</span>
+                </button>
 
-</div>
+                <a
+                  class="reels-card-link"
+                  href="https://www.instagram.com/digest.uzbekistan/"
+                  target="_blank"
+                  rel="noopener nofollow"
+                  aria-label="Открыть видео в Instagram"
+                >
+                  Instagram
+                </a>
+              </div>
+            </li>
 
-</section>
+            <li class="reels-list-item">
+              <div class="reels-card">
+                <button
+                  class="reels-card-preview"
+                  type="button"
+                  data-video="https://www.instagram.com/p/DV8BO1wAu41/embed"
+                  aria-label="Смотреть видео"
+                >
+                  <span class="reels-card-image">
+                    <img
+                      src="/Reels/Most.png"
+                      alt="Видео Digest"
+                      loading="lazy"
+                    />
+                  </span>
+                  <span class="reels-card-play">▶</span>
+                </button>
 
-<div class="content-grid">
+                <a
+                  class="reels-card-link"
+                  href="https://www.instagram.com/digest.uzbekistan/"
+                  target="_blank"
+                  rel="noopener nofollow"
+                  aria-label="Открыть видео в Instagram"
+                >
+                  Instagram
+                </a>
+              </div>
+            </li>
 
-<section class="news-feed">
+            <li class="reels-list-item">
+              <div class="reels-card">
+                <button
+                  class="reels-card-preview"
+                  type="button"
+                  data-video="https://www.instagram.com/p/DV76ofGg3ut/embed"
+                  aria-label="Смотреть видео"
+                >
+                  <span class="reels-card-image">
+                    <img
+                      src="/Reels/Pagani.png"
+                      alt="Видео Digest"
+                      loading="lazy"
+                    />
+                  </span>
+                  <span class="reels-card-play">▶</span>
+                </button>
 
-<article class="news-card">
-<img src="https://via.placeholder.com/400x200" alt="Новость">
-<h3>Новость 1</h3>
-<p>Краткое описание новости.</p>
-</article>
+                <a
+                  class="reels-card-link"
+                  href="https://www.instagram.com/digest.uzbekistan/"
+                  target="_blank"
+                  rel="noopener nofollow"
+                  aria-label="Открыть видео в Instagram"
+                >
+                  Instagram
+                </a>
+              </div>
+            </li>
 
-<article class="news-card">
-<img src="https://via.placeholder.com/400x200" alt="Новость">
-<h3>Новость 2</h3>
-<p>Краткое описание новости.</p>
-</article>
+            <li class="reels-list-item">
+              <div class="reels-card">
+                <button
+                  class="reels-card-preview"
+                  type="button"
+                  data-video="https://www.instagram.com/p/DV7yYsCAh22/embed"
+                  aria-label="Смотреть видео"
+                >
+                  <span class="reels-card-image">
+                    <img
+                      src="/Reels/Pozhar.jpg"
+                      alt="Видео Digest"
+                      loading="lazy"
+                    />
+                  </span>
+                  <span class="reels-card-play">▶</span>
+                </button>
 
-<article class="news-card">
-<img src="https://via.placeholder.com/400x200" alt="Новость">
-<h3>Новость 3</h3>
-<p>Краткое описание новости.</p>
-</article>
+                <a
+                  class="reels-card-link"
+                  href="https://www.instagram.com/digest.uzbekistan/"
+                  target="_blank"
+                  rel="noopener nofollow"
+                  aria-label="Открыть видео в Instagram"
+                >
+                  Instagram
+                </a>
+              </div>
+            </li>
 
-<article class="news-card">
-<img src="https://via.placeholder.com/400x200" alt="Новость">
-<h3>Новость 4</h3>
-<p>Краткое описание новости.</p>
-</article>
+            <li class="reels-list-item reels-list-item-more">
+              <a
+                class="reels-more-card"
+                href="https://www.instagram.com/digest.uzbekistan/"
+                target="_blank"
+                rel="noopener nofollow"
+                aria-label="Смотреть все видео в Instagram"
+              >
+                <span>Смотреть все видео</span>
+                <span class="reels-more-arrow">→</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
 
-<article class="news-card">
-<img src="https://via.placeholder.com/400x200" alt="Новость">
-<h3>Новость 5</h3>
-<p>Краткое описание новости.</p>
-</article>
+    <footer class="footer">
+      <div class="container footer-container">
+        <p>&copy; 2026 Дайджест. Все права защищены.</p>
 
-<article class="news-card">
-<img src="https://via.placeholder.com/400x200" alt="Новость">
-<h3>Новость 6</h3>
-<p>Краткое описание новости.</p>
-</article>
+        <nav class="footer-nav">
+          <a href="#">Политика конфиденциальности</a>
+          <a href="#">Контакты</a>
+        </nav>
 
-<article class="news-card">
-<img src="https://via.placeholder.com/400x200" alt="Новость">
-<h3>Новость 7</h3>
-<p>Краткое описание новости.</p>
-</article>
+        <div class="footer-socials">
+          <a
+            href="https://t.me/+rI4mVrzYphxkZGYy"
+            class="footer-social telegram"
+            target="_blank"
+            aria-label="Telegram"
+          ></a>
+          <a
+            href="https://www.instagram.com/digest.uzbekistan/"
+            class="footer-social instagram"
+            target="_blank"
+            aria-label="Instagram"
+          ></a>
+          <a
+            href="https://www.tiktok.com/@digest.uzbekistan"
+            class="footer-social tiktok"
+            target="_blank"
+            aria-label="TikTok"
+          ></a>
+          <a
+            href="https://www.youtube.com/@digest.uzbekistan"
+            class="footer-social youtube"
+            target="_blank"
+            aria-label="YouTube"
+          ></a>
+        </div>
+      </div>
+    </footer>
 
-<article class="news-card">
-<img src="https://via.placeholder.com/400x200" alt="Новость">
-<h3>Новость 8</h3>
-<p>Краткое описание новости.</p>
-</article>
+    <div class="reels-modal" id="reelsModal" aria-hidden="true">
+      <div class="reels-modal-backdrop" id="reelsModalBackdrop"></div>
 
-<article class="news-card">
-<img src="https://via.placeholder.com/400x200" alt="Новость">
-<h3>Новость 9</h3>
-<p>Краткое описание новости.</p>
-</article>
+      <div
+        class="reels-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Просмотр видео"
+      >
+        <button
+          class="reels-modal-close"
+          id="reelsModalClose"
+          aria-label="Закрыть"
+        >
+          ✕
+        </button>
 
-<article class="news-card">
-<img src="https://via.placeholder.com/400x200" alt="Новость">
-<h3>Новость 10</h3>
-<p>Краткое описание новости.</p>
-</article>
+        <div class="reels-modal-content">
+          <iframe
+            id="reelsModalFrame"
+            src=""
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
 
-</section>
-
-<aside class="sidebar">
-
-<div class="ads">
-<h4>Реклама</h4>
-<img src="/AdPlaceholder.jpg" alt="Реклама">
-</div>
-
-</aside>
-
-</div>
-</main>
-
-<footer class="footer">
-<div class="container footer-container">
-
-<p>&copy; 2026 Дайджест. Все права защищены.</p>
-
-<nav class="footer-nav">
-<a href="#">Политика конфиденциальности</a>
-<a href="#">Контакты</a>
-</nav>
-
-<div class="footer-socials">
-<a href="https://t.me/+rI4mVrzYphxkZGYy" class="footer-social telegram" target="_blank" aria-label="Telegram"></a>
-<a href="https://www.instagram.com/digest.uzbekistan/" class="footer-social instagram" target="_blank" aria-label="Instagram"></a>
-<a href="https://www.tiktok.com/@digest.uzbekistan" class="footer-social tiktok" target="_blank" aria-label="TikTok"></a>
-<a href="https://www.youtube.com/@digest.uzbekistan" class="footer-social youtube" target="_blank" aria-label="YouTube"></a>
-</div>
-
-</div>
-</footer>
-
-<script src="index.js"></script>
-
-</body>
+    <script src="index.js"></script>
+  </body>
 </html>
