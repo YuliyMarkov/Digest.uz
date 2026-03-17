@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="Icons/Logo_Min.png" type="image/png" />
+    <title>Новости Узбекистана — Дайджест</title>
+    <link rel="stylesheet" href="UzbekistanNews.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container header-container">
+        <div class="logo">
+          <a href="index.html" aria-label="Дайджест — на главную">
+            <img src="New_Logo.png" alt="Дайджест Logo" />
+          </a>
+        </div>
+
+        <nav class="nav" id="navMenu" aria-label="Основная навигация">
+          <a href="Uzbekistan.html" class="active">Узбекистан</a>
+          <a href="#">Мир</a>
+          <a href="#">Авто</a>
+          <a href="#">Происшествия</a>
+          <a href="#">Наука</a>
+          <a href="#">Экономика</a>
+
+          <form class="mobile-search-form" id="mobileSearchForm" role="search">
+            <div class="mobile-search-row">
+              <input
+                type="search"
+                id="mobileSearchInput"
+                class="mobile-search-input"
+                placeholder="Поиск по сайту..."
+                aria-label="Поиск по сайту"
+              />
+              <button type="submit" class="mobile-search-btn">Поиск</button>
+            </div>
+          </form>
+
+          <button
+            class="mobile-auth-trigger"
+            id="mobileAuthTrigger"
+            type="button"
+            aria-label="Открыть вход и регистрацию"
+          >
+            Вход / Регистрация
+          </button>
+        </nav>
+
+        <div class="header-actions">
+          <button
+            class="search-toggle"
+            id="searchToggle"
+            type="button"
+            aria-label="Открыть поиск"
+            aria-expanded="false"
+            aria-controls="desktopSearchBar"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="11" cy="11" r="7"></circle>
+              <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+            </svg>
+          </button>
+
+          <button
+            class="auth-toggle"
+            id="authToggle"
+            type="button"
+            aria-label="Открыть вход и регистрацию"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"></path>
+              <path d="M4 20a8 8 0 0 1 16 0"></path>
+            </svg>
+          </button>
+
+          <div class="socials" aria-label="Социальные сети">
+            <a
+              href="https://t.me/+rI4mVrzYphxkZGYy"
+              class="social telegram"
+              aria-label="Telegram"
+              target="_blank"
+              rel="noopener noreferrer"
+            ></a>
+            <a
+              href="https://www.instagram.com/digest.uzbekistan/"
+              class="social instagram"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            ></a>
+            <a
+              href="https://www.tiktok.com/@digest.uzbekistan"
+              class="social tiktok"
+              aria-label="TikTok"
+              target="_blank"
+              rel="noopener noreferrer"
+            ></a>
+            <a
+              href="https://www.youtube.com/@digest.uzbekistan"
+              class="social youtube"
+              aria-label="YouTube"
+              target="_blank"
+              rel="noopener noreferrer"
+            ></a>
+          </div>
+
+          <div class="theme-switch-wrapper">
+            <label class="theme-switch" aria-label="Переключить тему">
+              <input type="checkbox" id="theme-toggle" />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <button
+            class="burger"
+            id="burgerBtn"
+            type="button"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+            aria-controls="navMenu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="desktop-search-wrap" id="desktopSearchBar">
+        <div class="container">
+          <form
+            class="desktop-search-form"
+            id="desktopSearchForm"
+            role="search"
+          >
+            <input
+              type="search"
+              id="desktopSearchInput"
+              class="desktop-search-input"
+              placeholder="Поиск по сайту..."
+              aria-label="Поиск по сайту"
+            />
+            <button type="submit" class="desktop-search-btn">Поиск</button>
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="category-hero">
+        <div class="container">
+          <div class="category-hero-inner">
+            <div class="category-breadcrumbs">
+              <a href="index.html">Главная</a>
+              <span>/</span>
+              <span>Узбекистан</span>
+            </div>
+
+            <h1>Новости Узбекистана</h1>
+
+            <p class="category-description">
+              Актуальные новости Узбекистана: события в Ташкенте и регионах,
+              изменения в городской жизни, общественно важные темы, транспорт,
+              инфраструктура, экономика и всё, что происходит в стране прямо
+              сейчас.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="horizontal-ad">
+        <div class="container">
+          <div class="horizontal-ad-box">
+            <a href="#" class="horizontal-ad-link">
+              <img src="ToporAd.jpg" alt="Реклама" class="horizontal-ad-img" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="category-news-section">
+        <div class="container">
+          <div class="category-news-grid" id="categoryNewsGrid">
+            <article class="category-news-card">
+              <a
+                href="News.html"
+                class="category-news-card-link"
+                aria-label="Открыть новость"
+              >
+                <img
+                  src="Photos-for-Site/file_69b7ecdda2a38_avif.avif"
+                  alt="В Фергане осужден узбекистанец, воевавший в Украине на стороне России"
+                />
+                <h3>
+                  В Фергане осужден узбекистанец, воевавший в Украине на стороне
+                  России
+                </h3>
+                <p>
+                  На суде мужчина рассказал, что поехал в РФ на заработки и
+                  подписал документы, не понимая их содержания.
+                </p>
+              </a>
+            </article>
+
+            <article class="category-news-card">
+              <a href="#" class="category-news-card-link" aria-label="Открыть новость">
+                <img
+                  src="Photos-for-Site/file_69b7e2a2c8865_avif.avif"
+                  alt="В Джизаке задержан сотрудник Департамента по экономическим преступлениям"
+                />
+                <h3>
+                  В Джизаке задержан сотрудник Департамента по экономическим
+                  преступлениям
+                </h3>
+                <p>
+                  Он вместе с директором одной из школ планировал закупить
+                  интерактивные доски почти вдвое дороже их реальной стоимости.
+                </p>
+              </a>
+            </article>
+
+            <article class="category-news-card">
+              <a href="#" class="category-news-card-link" aria-label="Открыть новость">
+                <img
+                  src="Photos-for-Site/photo_2026-03-16_17-10-58.jpg"
+                  alt="На Дархане горят знаменитые 19-этажные высотки"
+                />
+                <h3>Прямо сейчас на Дархане горят знаменитые 19-этажные высотки</h3>
+                <p>
+                  В Ташкенте, в доме рядом со станцией метро «Хамида Алимджана»,
+                  произошло сильное возгорание.
+                </p>
+              </a>
+            </article>
+
+            <article class="category-news-card">
+              <a href="#" class="category-news-card-link" aria-label="Открыть новость">
+                <img
+                  src="Photos-for-Site/photo_2026-03-16_17-24-06.jpg"
+                  alt="Лучшие дерматологи Ташкента: кого чаще всего хвалят пациенты"
+                />
+                <h3>
+                  Лучшие дерматологи Ташкента: кого чаще всего хвалят пациенты
+                </h3>
+                <p>
+                  По обсуждениям участников «Потребитель уз» больше всего
+                  положительных отзывов получили 11 дерматологов.
+                </p>
+              </a>
+            </article>
+
+            <article class="category-news-card">
+              <a href="#" class="category-news-card-link" aria-label="Открыть новость">
+                <img
+                  src="Photos-for-Site/photo_2026-03-15_13-43-45.jpg"
+                  alt="В Tashkent City заметили дым над новым ТЦ Park In Mall"
+                />
+                <h3>В Tashkent City заметили дым над новым ТЦ Park In Mall</h3>
+                <p>
+                  По словам очевидцев, прямо сейчас над торговым центром Park In
+                  Mall в Tashkent City поднимается густой дым.
+                </p>
+              </a>
+            </article>
+
+            <article class="category-news-card">
+              <a href="#" class="category-news-card-link" aria-label="Открыть новость">
+                <img
+                  src="Photos-for-Site/photo_2026-03-15_04-50-32.jpg"
+                  alt="С 1 апреля в Узбекистане начнут отказываться от наличных"
+                />
+                <h3>
+                  Официально: с 1 апреля в Узбекистане начнут отказываться от
+                  наличных
+                </h3>
+                <p>Многие платежи перейдут на карты.</p>
+              </a>
+            </article>
+
+            <article class="category-news-card">
+              <a href="#" class="category-news-card-link" aria-label="Открыть новость">
+                <img
+                  src="Photos-for-Site/photo_2026-03-16_11-58-02.jpg"
+                  alt="В Узбекистане на этой неделе ожидается потепление до +20°C"
+                />
+                <h3>
+                  Готовьте футболки и кепки: в Узбекистане на этой неделе
+                  потеплеет до +20°C
+                </h3>
+                <p>
+                  Синоптики прогнозируют заметное потепление и более комфортную
+                  погоду в нескольких регионах страны.
+                </p>
+              </a>
+            </article>
+
+            <article class="category-news-card">
+              <a href="#" class="category-news-card-link" aria-label="Открыть новость">
+                <img
+                  src="Photos-for-Site/photo_2026-03-16_13-50-12.jpg"
+                  alt="С 16 марта лимит на газ в стране заметно сократился"
+                />
+                <h3>
+                  Конец газовой «поблажки»: с 16 марта лимит на газ резко
+                  сократился
+                </h3>
+                <p>
+                  Изменения уже начали сказываться на бытовом потреблении и
+                  обсуждаются жителями в разных регионах.
+                </p>
+              </a>
+            </article>
+
+            <article class="category-news-card">
+              <a href="#" class="category-news-card-link" aria-label="Открыть новость">
+                <img
+                  src="Photos-for-Site/photo_2026-03-16_11-35-13.jpg"
+                  alt="В Ташкенте усилили контроль за дорожным движением в центре города"
+                />
+                <h3>
+                  В Ташкенте усилили контроль за дорожным движением в центре
+                  города
+                </h3>
+                <p>
+                  В столице ввели дополнительные меры контроля на наиболее
+                  загруженных участках дорог.
+                </p>
+              </a>
+            </article>
+
+            <article class="category-news-card">
+              <a href="#" class="category-news-card-link" aria-label="Открыть новость">
+                <img
+                  src="Photos-for-Site/photo_2026-03-16_17-24-06.jpg"
+                  alt="Узгидромет предупредил о переменчивой погоде в ряде регионов"
+                />
+                <h3>
+                  Узгидромет предупредил о переменчивой погоде в ряде регионов
+                </h3>
+                <p>
+                  В ближайшие дни возможны кратковременные осадки и перепады
+                  температуры.
+                </p>
+              </a>
+            </article>
+
+            <article class="category-news-card">
+              <a href="#" class="category-news-card-link" aria-label="Открыть новость">
+                <img
+                  src="Photos-for-Site/photo_2026-03-15_13-43-45.jpg"
+                  alt="Новый жилой комплекс в столице вызвал споры среди жителей района"
+                />
+                <h3>
+                  Новый жилой комплекс в столице вызвал споры среди жителей
+                  района
+                </h3>
+                <p>
+                  Жители обсуждают влияние проекта на трафик, инфраструктуру и
+                  общий облик района.
+                </p>
+              </a>
+            </article>
+
+            <article class="category-news-card">
+              <a href="#" class="category-news-card-link" aria-label="Открыть новость">
+                <img
+                  src="Photos-for-Site/photo_2026-03-16_13-50-12.jpg"
+                  alt="В аэропорту Ташкента изменили расписание нескольких международных рейсов"
+                />
+                <h3>
+                  В аэропорту Ташкента изменили расписание нескольких
+                  международных рейсов
+                </h3>
+                <p>
+                  Часть вылетов была скорректирована из-за изменений в воздушном
+                  сообщении.
+                </p>
+              </a>
+            </article>
+          </div>
+
+          <div class="more-news-action">
+            <button class="more-news-button" id="loadMoreNews" type="button">
+              Больше новостей
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-container">
+        <p>&copy; 2026 Дайджест. Все права защищены.</p>
+
+        <nav class="footer-nav" aria-label="Навигация в подвале">
+          <a href="#">Политика конфиденциальности</a>
+          <a href="#">Контакты</a>
+        </nav>
+
+        <div class="footer-socials">
+          <a
+            href="https://t.me/+rI4mVrzYphxkZGYy"
+            class="footer-social telegram"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Telegram"
+          ></a>
+          <a
+            href="https://www.instagram.com/digest.uzbekistan/"
+            class="footer-social instagram"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          ></a>
+          <a
+            href="https://www.tiktok.com/@digest.uzbekistan"
+            class="footer-social tiktok"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok"
+          ></a>
+          <a
+            href="https://www.youtube.com/@digest.uzbekistan"
+            class="footer-social youtube"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="auth-modal" id="authModal" aria-hidden="true">
+      <div class="auth-modal-backdrop" id="authModalBackdrop"></div>
+
+      <div
+        class="auth-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Вход и регистрация"
+      >
+        <button
+          class="auth-modal-close"
+          id="authModalClose"
+          type="button"
+          aria-label="Закрыть"
+        >
+          ✕
+        </button>
+
+        <div class="auth-modal-card">
+          <div class="auth-tabs">
+            <button
+              class="auth-tab active"
+              id="loginTab"
+              type="button"
+              data-auth-tab="login"
+            >
+              Вход
+            </button>
+            <button
+              class="auth-tab"
+              id="registerTab"
+              type="button"
+              data-auth-tab="register"
+            >
+              Регистрация
+            </button>
+          </div>
+
+          <div class="auth-panels">
+            <div class="auth-panel active" id="loginPanel">
+              <h3>С возвращением</h3>
+              <p class="auth-subtitle">Войдите в аккаунт, чтобы продолжить</p>
+
+              <form class="auth-form" id="loginForm">
+                <input
+                  type="email"
+                  class="auth-input"
+                  placeholder="Email"
+                  required
+                />
+                <input
+                  type="password"
+                  class="auth-input"
+                  placeholder="Пароль"
+                  required
+                />
+                <button type="submit" class="auth-submit-btn">Войти</button>
+              </form>
+
+              <div class="auth-divider">
+                <span>или через соцсети</span>
+              </div>
+
+              <div class="auth-socials">
+                <a href="#" class="auth-social-btn auth-google">
+                  <span class="auth-social-icon"></span>
+                  Google
+                </a>
+
+                <a href="#" class="auth-social-btn auth-facebook">
+                  <span class="auth-social-icon"></span>
+                  Facebook
+                </a>
+
+                <a href="#" class="auth-social-btn auth-telegram">
+                  <span class="auth-social-icon"></span>
+                  Telegram
+                </a>
+              </div>
+            </div>
+
+            <div class="auth-panel" id="registerPanel">
+              <h3>Создать аккаунт</h3>
+              <p class="auth-subtitle">Зарегистрируйтесь за минуту</p>
+
+              <form class="auth-form" id="registerForm">
+                <input
+                  type="text"
+                  class="auth-input"
+                  placeholder="Имя"
+                  required
+                />
+                <input
+                  type="email"
+                  class="auth-input"
+                  placeholder="Email"
+                  required
+                />
+                <input
+                  type="password"
+                  class="auth-input"
+                  placeholder="Пароль"
+                  required
+                />
+                <button type="submit" class="auth-submit-btn">
+                  Зарегистрироваться
+                </button>
+              </form>
+
+              <div class="auth-divider">
+                <span>или через соцсети</span>
+              </div>
+
+              <div class="auth-socials">
+                <a href="#" class="auth-social-btn auth-google">
+                  <span class="auth-social-icon"></span>
+                  Google
+                </a>
+
+                <a href="#" class="auth-social-btn auth-facebook">
+                  <span class="auth-social-icon"></span>
+                  Facebook
+                </a>
+
+                <a href="#" class="auth-social-btn auth-telegram">
+                  <span class="auth-social-icon"></span>
+                  Telegram
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="UzbekistanNews.js"></script>
+  </body>
+</html>
