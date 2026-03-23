@@ -1,151 +1,52 @@
+// =================== ВСПОМОГАТЕЛЬНЫЕ ===================
+
+function $(id) {
+  return document.getElementById(id);
+}
+
+function isMobileWidth() {
+  return window.innerWidth <= 700;
+}
+
 // =================== ТЁМНАЯ ТЕМА ===================
 
-const toggleBtn = document.getElementById("theme-toggle");
+const themeToggle = $("theme-toggle");
 
-if (toggleBtn) {
-  toggleBtn.addEventListener("change", () => {
-    document.body.classList.toggle("dark-theme", toggleBtn.checked);
+if (themeToggle) {
+  themeToggle.addEventListener("change", () => {
+    document.body.classList.toggle("dark-theme", themeToggle.checked);
   });
 }
 
-// =================== СЛАЙДЕР ГЛАВНЫХ НОВОСТЕЙ ===================
+// =================== БУРГЕР ===================
 
-const track = document.getElementById("topNewsTrack");
-const prevBtn = document.getElementById("topNewsPrev");
-const nextBtn = document.getElementById("topNewsNext");
-const dots = document.querySelectorAll(".top-news-dot");
-const slides = document.querySelectorAll(".top-slide");
-const sliderViewport = document.querySelector(".top-news-viewport");
+const burgerBtn = $("burgerBtn");
+const navMenu = $("navMenu");
 
-let index = 0;
-let autoSlideInterval = null;
-
-function updateSlider() {
-  if (!track) return;
-
-  track.style.transform = `translateX(-${index * 100}%)`;
-
-  dots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === index);
-  });
+function closeBurgerMenu() {
+  if (!navMenu || !burgerBtn) return;
+  navMenu.classList.remove("active");
+  burgerBtn.setAttribute("aria-expanded", "false");
 }
 
-function goToNextSlide() {
-  index++;
-  if (index >= slides.length) {
-    index = 0;
-  }
-  updateSlider();
+function toggleBurgerMenu() {
+  if (!navMenu || !burgerBtn) return;
+  const isActive = navMenu.classList.toggle("active");
+  burgerBtn.setAttribute("aria-expanded", String(isActive));
 }
 
-function goToPrevSlide() {
-  index--;
-  if (index < 0) {
-    index = slides.length - 1;
-  }
-  updateSlider();
-}
-
-function startAutoSlide() {
-  if (slides.length <= 1) return;
-  stopAutoSlide();
-  autoSlideInterval = setInterval(() => {
-    goToNextSlide();
-  }, 5000);
-}
-
-function stopAutoSlide() {
-  if (autoSlideInterval) {
-    clearInterval(autoSlideInterval);
-    autoSlideInterval = null;
-  }
-}
-
-if (track && slides.length) {
-  updateSlider();
-  startAutoSlide();
-}
-
-if (nextBtn) {
-  nextBtn.addEventListener("click", () => {
-    goToNextSlide();
-    startAutoSlide();
-  });
-}
-
-if (prevBtn) {
-  prevBtn.addEventListener("click", () => {
-    goToPrevSlide();
-    startAutoSlide();
-  });
-}
-
-dots.forEach((dot) => {
-  dot.addEventListener("click", () => {
-    index = Number(dot.dataset.slide);
-    updateSlider();
-    startAutoSlide();
-  });
-});
-
-// =================== СВАЙП ГЛАВНЫХ НОВОСТЕЙ ===================
-
-let startX = 0;
-let endX = 0;
-
-if (sliderViewport) {
-  sliderViewport.addEventListener("touchstart", (e) => {
-    stopAutoSlide();
-    startX = e.touches[0].clientX;
-    endX = startX;
-  });
-
-  sliderViewport.addEventListener("touchmove", (e) => {
-    endX = e.touches[0].clientX;
-  });
-
-  sliderViewport.addEventListener("touchend", () => {
-    const diff = startX - endX;
-
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) {
-        goToNextSlide();
-      } else {
-        goToPrevSlide();
-      }
-    }
-
-    startAutoSlide();
-  });
-
-  sliderViewport.addEventListener("mouseenter", stopAutoSlide);
-  sliderViewport.addEventListener("mouseleave", startAutoSlide);
-}
-
-// =================== БУРГЕР МЕНЮ ===================
-
-const burger = document.getElementById("burgerBtn");
-const nav = document.getElementById("navMenu");
-
-if (burger && nav) {
-  burger.addEventListener("click", () => {
-    const isActive = nav.classList.toggle("active");
-    burger.setAttribute("aria-expanded", String(isActive));
-  });
+if (burgerBtn && navMenu) {
+  burgerBtn.addEventListener("click", toggleBurgerMenu);
 }
 
 // =================== ПОИСК ===================
 
-const searchToggle = document.getElementById("searchToggle");
-const desktopSearchBar = document.getElementById("desktopSearchBar");
-const desktopSearchForm = document.getElementById("desktopSearchForm");
-const desktopSearchInput = document.getElementById("desktopSearchInput");
-const mobileSearchForm = document.getElementById("mobileSearchForm");
-const mobileSearchInput = document.getElementById("mobileSearchInput");
-
-function isMobileSearchMode() {
-  return window.innerWidth <= 700;
-}
+const searchToggle = $("searchToggle");
+const desktopSearchBar = $("desktopSearchBar");
+const desktopSearchForm = $("desktopSearchForm");
+const desktopSearchInput = $("desktopSearchInput");
+const mobileSearchForm = $("mobileSearchForm");
+const mobileSearchInput = $("mobileSearchInput");
 
 function openDesktopSearch() {
   if (!desktopSearchBar || !searchToggle) return;
@@ -155,9 +56,7 @@ function openDesktopSearch() {
   searchToggle.setAttribute("aria-label", "Закрыть поиск");
 
   if (desktopSearchInput) {
-    setTimeout(() => {
-      desktopSearchInput.focus();
-    }, 180);
+    setTimeout(() => desktopSearchInput.focus(), 180);
   }
 }
 
@@ -173,7 +72,6 @@ function toggleDesktopSearch() {
   if (!desktopSearchBar) return;
 
   const isActive = desktopSearchBar.classList.contains("active");
-
   if (isActive) {
     closeDesktopSearch();
   } else {
@@ -182,15 +80,13 @@ function toggleDesktopSearch() {
 }
 
 function handleSearch(query) {
-  const value = query.trim();
-
+  const value = String(query || "").trim();
   if (!value) return;
 
   console.log("Поисковый запрос:", value);
 
   const url = new URL(window.location.href);
   url.searchParams.set("search", value);
-
   window.location.href = url.toString();
 }
 
@@ -212,54 +108,29 @@ if (mobileSearchForm) {
   });
 }
 
-document.addEventListener("click", (e) => {
-  if (
-    !isMobileSearchMode() &&
-    desktopSearchBar &&
-    searchToggle &&
-    desktopSearchBar.classList.contains("active") &&
-    !desktopSearchBar.contains(e.target) &&
-    !searchToggle.contains(e.target)
-  ) {
-    closeDesktopSearch();
-  }
-});
-
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 700) {
-    if (nav) {
-      nav.classList.remove("active");
-    }
-
-    if (burger) {
-      burger.setAttribute("aria-expanded", "false");
-    }
-  }
-
-  if (window.innerWidth <= 700) {
-    closeDesktopSearch();
-  }
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    closeDesktopSearch();
-  }
-});
-
 // =================== AUTH MODAL ===================
 
-const authToggle = document.getElementById("authToggle");
-const mobileAuthTrigger = document.getElementById("mobileAuthTrigger");
-const authModal = document.getElementById("authModal");
-const authModalClose = document.getElementById("authModalClose");
-const authModalBackdrop = document.getElementById("authModalBackdrop");
-const loginTab = document.getElementById("loginTab");
-const registerTab = document.getElementById("registerTab");
-const loginPanel = document.getElementById("loginPanel");
-const registerPanel = document.getElementById("registerPanel");
-const loginForm = document.getElementById("loginForm");
-const registerForm = document.getElementById("registerForm");
+const authToggle = $("authToggle");
+const mobileAuthTrigger = $("mobileAuthTrigger");
+const authModal = $("authModal");
+const authModalClose = $("authModalClose");
+const authModalBackdrop = $("authModalBackdrop");
+const loginTab = $("loginTab");
+const registerTab = $("registerTab");
+const loginPanel = $("loginPanel");
+const registerPanel = $("registerPanel");
+const loginForm = $("loginForm");
+const registerForm = $("registerForm");
+
+function switchAuthTab(tab) {
+  if (!loginTab || !registerTab || !loginPanel || !registerPanel) return;
+
+  const isLogin = tab === "login";
+  loginTab.classList.toggle("active", isLogin);
+  registerTab.classList.toggle("active", !isLogin);
+  loginPanel.classList.toggle("active", isLogin);
+  registerPanel.classList.toggle("active", !isLogin);
+}
 
 function openAuthModal(tab = "login") {
   if (!authModal) return;
@@ -276,17 +147,6 @@ function closeAuthModal() {
   authModal.classList.remove("active");
   authModal.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
-}
-
-function switchAuthTab(tab) {
-  if (!loginTab || !registerTab || !loginPanel || !registerPanel) return;
-
-  const isLogin = tab === "login";
-
-  loginTab.classList.toggle("active", isLogin);
-  registerTab.classList.toggle("active", !isLogin);
-  loginPanel.classList.toggle("active", isLogin);
-  registerPanel.classList.toggle("active", !isLogin);
 }
 
 if (authToggle) {
@@ -329,99 +189,247 @@ if (registerForm) {
   });
 }
 
-// =================== REELS SLIDER ===================
+// =================== SHARE DROPDOWN ===================
 
-const reelsTrack = document.getElementById("reelsTrack");
-const reelsPrev = document.getElementById("reelsPrev");
-const reelsNext = document.getElementById("reelsNext");
-const reelsItems = document.querySelectorAll(".reels-list-item");
-const reelsViewport = document.getElementById("reelsViewport");
+const shareBox = $("shareBox");
+const shareToggleBtn = $("shareToggleBtn");
+const shareDropdown = $("shareDropdown");
+const shareTelegram = $("shareTelegram");
+const shareFacebook = $("shareFacebook");
 
-let reelsIndex = 0;
-
-function isMobileReels() {
-  return window.innerWidth <= 700;
+function closeShareDropdown() {
+  if (!shareDropdown || !shareToggleBtn) return;
+  shareDropdown.classList.remove("active");
+  shareToggleBtn.setAttribute("aria-expanded", "false");
 }
 
-function getReelsVisibleCount() {
-  if (window.innerWidth <= 700) return 1;
-  if (window.innerWidth <= 1100) return 2;
-  return 3;
+function openShareDropdown() {
+  if (!shareDropdown || !shareToggleBtn) return;
+  shareDropdown.classList.add("active");
+  shareToggleBtn.setAttribute("aria-expanded", "true");
 }
 
-function getReelsStep() {
-  if (!reelsItems.length || !reelsTrack) return 0;
-
-  const itemWidth = reelsItems[0].offsetWidth;
-  const gap = parseInt(window.getComputedStyle(reelsTrack).gap, 10) || 0;
-
-  return itemWidth + gap;
+function toggleShareDropdown() {
+  if (!shareDropdown) return;
+  const isActive = shareDropdown.classList.contains("active");
+  if (isActive) {
+    closeShareDropdown();
+  } else {
+    openShareDropdown();
+  }
 }
 
-function getMaxReelsIndex() {
-  return Math.max(0, reelsItems.length - getReelsVisibleCount());
+if (shareToggleBtn) {
+  shareToggleBtn.addEventListener("click", toggleShareDropdown);
 }
 
-function updateReelsSlider() {
-  if (!reelsTrack || !reelsItems.length) return;
+if (shareTelegram || shareFacebook) {
+  const currentUrl = encodeURIComponent(window.location.href);
+  const currentTitle = encodeURIComponent(document.title);
 
-  if (isMobileReels()) {
-    reelsTrack.style.transform = "none";
-    return;
+  if (shareTelegram) {
+    shareTelegram.href = `https://t.me/share/url?url=${currentUrl}&text=${currentTitle}`;
   }
 
-  const maxIndex = getMaxReelsIndex();
-
-  if (reelsIndex > maxIndex) reelsIndex = 0;
-  if (reelsIndex < 0) reelsIndex = 0;
-
-  reelsTrack.style.transform = `translateX(-${reelsIndex * getReelsStep()}px)`;
+  if (shareFacebook) {
+    shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
+  }
 }
 
-if (reelsNext) {
-  reelsNext.addEventListener("click", () => {
-    const maxIndex = getMaxReelsIndex();
+// =================== КОММЕНТАРИИ ===================
 
-    if (reelsIndex >= maxIndex) {
-      reelsIndex = 0;
-    } else {
-      reelsIndex++;
-    }
+const commentForm = $("commentForm");
+const commentName = $("commentName");
+const commentText = $("commentText");
+const commentsList = $("commentsList");
+const commentsCount = $("commentsCount");
 
-    updateReelsSlider();
+function updateCommentsCount() {
+  if (!commentsList || !commentsCount) return;
+  const totalComments = commentsList.querySelectorAll(".comment-card").length;
+  commentsCount.textContent = String(totalComments);
+}
+
+function formatCommentDate() {
+  const now = new Date();
+  return now.toLocaleString("ru-RU", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
   });
 }
 
-if (reelsPrev) {
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function createCommentCard(name, text) {
+  const article = document.createElement("article");
+  article.className = "comment-card";
+
+  article.innerHTML = `
+    <div class="comment-top">
+      <h3>${escapeHtml(name)}</h3>
+      <span>${formatCommentDate()}</span>
+    </div>
+    <p>${escapeHtml(text)}</p>
+  `;
+
+  return article;
+}
+
+if (commentForm && commentName && commentText && commentsList) {
+  commentForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const nameValue = commentName.value.trim();
+    const textValue = commentText.value.trim();
+
+    if (!nameValue || !textValue) return;
+
+    const newComment = createCommentCard(nameValue, textValue);
+    commentsList.prepend(newComment);
+
+    commentForm.reset();
+    updateCommentsCount();
+  });
+
+  updateCommentsCount();
+}
+
+// =================== ГЛАВНАЯ: TOP NEWS SLIDER ===================
+
+const topNewsTrack = $("topNewsTrack");
+const topNewsPrev = $("topNewsPrev");
+const topNewsNext = $("topNewsNext");
+const topNewsDotsWrap = $("topNewsDots");
+
+if (topNewsTrack) {
+  const slides = Array.from(topNewsTrack.querySelectorAll(".top-slide"));
+  const dots = topNewsDotsWrap
+    ? Array.from(topNewsDotsWrap.querySelectorAll(".top-news-dot"))
+    : [];
+
+  let currentSlide = 0;
+
+  function renderTopNewsSlider() {
+    topNewsTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentSlide);
+    });
+  }
+
+  function goToTopSlide(index) {
+    if (!slides.length) return;
+    currentSlide = (index + slides.length) % slides.length;
+    renderTopNewsSlider();
+  }
+
+  if (topNewsPrev) {
+    topNewsPrev.addEventListener("click", () => goToTopSlide(currentSlide - 1));
+  }
+
+  if (topNewsNext) {
+    topNewsNext.addEventListener("click", () => goToTopSlide(currentSlide + 1));
+  }
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => goToTopSlide(index));
+  });
+
+  renderTopNewsSlider();
+}
+
+// =================== ГЛАВНАЯ: REELS ===================
+
+const reelsViewport = $("reelsViewport");
+const reelsTrack = $("reelsTrack");
+const reelsPrev = $("reelsPrev");
+const reelsNext = $("reelsNext");
+
+if (reelsViewport && reelsTrack && reelsPrev && reelsNext) {
+  let reelsIndex = 0;
+
+  function getReelsStep() {
+    const firstItem = reelsTrack.querySelector(".reels-list-item, .reels-list-item-more");
+    if (!firstItem) return 0;
+
+    const itemWidth = firstItem.getBoundingClientRect().width;
+    const trackStyle = window.getComputedStyle(reelsTrack);
+    const gap = parseFloat(trackStyle.columnGap || trackStyle.gap || "0") || 0;
+
+    return itemWidth + gap;
+  }
+
+  function getVisibleReelsCount() {
+    if (window.innerWidth <= 700) return 1;
+    if (window.innerWidth <= 1100) return 2;
+    return 4;
+  }
+
+  function getMaxReelsIndex() {
+    const items = reelsTrack.querySelectorAll(".reels-list-item, .reels-list-item-more").length;
+    return Math.max(0, items - getVisibleReelsCount());
+  }
+
+  function updateReelsButtons() {
+    const maxIndex = getMaxReelsIndex();
+    reelsPrev.disabled = reelsIndex <= 0;
+    reelsNext.disabled = reelsIndex >= maxIndex;
+  }
+
+  function renderReels() {
+    if (window.innerWidth <= 700) {
+      reelsTrack.style.transform = "none";
+      updateReelsButtons();
+      return;
+    }
+
+    const step = getReelsStep();
+    reelsTrack.style.transform = `translateX(-${reelsIndex * step}px)`;
+    updateReelsButtons();
+  }
+
   reelsPrev.addEventListener("click", () => {
-    const maxIndex = getMaxReelsIndex();
-
-    if (reelsIndex <= 0) {
-      reelsIndex = maxIndex;
-    } else {
-      reelsIndex--;
-    }
-
-    updateReelsSlider();
+    reelsIndex = Math.max(0, reelsIndex - 1);
+    renderReels();
   });
-}
 
-window.addEventListener("load", updateReelsSlider);
-window.addEventListener("resize", updateReelsSlider);
+  reelsNext.addEventListener("click", () => {
+    reelsIndex = Math.min(getMaxReelsIndex(), reelsIndex + 1);
+    renderReels();
+  });
+
+  window.addEventListener("resize", () => {
+    reelsIndex = Math.min(reelsIndex, getMaxReelsIndex());
+    renderReels();
+  });
+
+  renderReels();
+}
 
 // =================== REELS MODAL ===================
 
-const reelsModal = document.getElementById("reelsModal");
-const reelsModalFrame = document.getElementById("reelsModalFrame");
-const reelsModalClose = document.getElementById("reelsModalClose");
-const reelsModalBackdrop = document.getElementById("reelsModalBackdrop");
-const reelsPreviewButtons = document.querySelectorAll(".reels-card-preview");
+const reelsModal = $("reelsModal");
+const reelsModalBackdrop = $("reelsModalBackdrop");
+const reelsModalClose = $("reelsModalClose");
+const reelsModalFrame = $("reelsModalFrame");
+const reelsPreviewButtons = document.querySelectorAll(".reels-card-preview[data-video]");
 
-function openReelsModal(src) {
-  if (!reelsModal || !reelsModalFrame || !src) return;
+function openReelsModal(videoUrl) {
+  if (!reelsModal || !reelsModalFrame) return;
 
-  reelsModalFrame.src = src;
   reelsModal.classList.add("active");
+  reelsModal.setAttribute("aria-hidden", "false");
+  reelsModalFrame.src = videoUrl;
   document.body.style.overflow = "hidden";
 }
 
@@ -429,29 +437,251 @@ function closeReelsModal() {
   if (!reelsModal || !reelsModalFrame) return;
 
   reelsModal.classList.remove("active");
+  reelsModal.setAttribute("aria-hidden", "true");
   reelsModalFrame.src = "";
   document.body.style.overflow = "";
 }
 
 reelsPreviewButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    const src = button.dataset.video;
-    openReelsModal(src);
+    const video = button.dataset.video;
+    if (video) openReelsModal(video);
   });
 });
-
-if (reelsModalClose) {
-  reelsModalClose.addEventListener("click", closeReelsModal);
-}
 
 if (reelsModalBackdrop) {
   reelsModalBackdrop.addEventListener("click", closeReelsModal);
 }
 
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    closeReelsModal();
-    closeAuthModal();
+if (reelsModalClose) {
+  reelsModalClose.addEventListener("click", closeReelsModal);
+}
+
+// =================== БОЛЬШЕ НОВОСТЕЙ: УНИВЕРСАЛЬНО ===================
+
+const loadMoreNewsBtn = $("loadMoreNews");
+const moreNewsGrid = $("moreNewsGrid");
+const categoryNewsGrid = $("categoryNewsGrid");
+
+const pageType = document.querySelector(".article-page")
+  ? "article"
+  : document.querySelector(".category-news-section")
+    ? "category"
+    : "home";
+
+const homeMoreNewsData = [
+  {
+    image: "Photos-for-Site/photo_2026-03-16_11-58-02.jpg",
+    title: "В столице начали обновлять общественные пространства в нескольких районах",
+    text: "Новые проекты затрагивают благоустройство улиц, озеленение и модернизацию городской среды.",
+    link: "News.html",
+  },
+  {
+    image: "Photos-for-Site/photo_2026-03-16_13-50-12.jpg",
+    title: "В Узбекистане усилили внимание к вопросам транспортной инфраструктуры",
+    text: "Речь идёт о развитии магистралей, обновлении узлов и повышении удобства для жителей.",
+    link: "News.html",
+  },
+  {
+    image: "Photos-for-Site/photo_2026-03-16_17-10-58.jpg",
+    title: "В ряде регионов страны продолжают запускать новые городские инициативы",
+    text: "Местные проекты направлены на повышение качества жизни и развитие общественных пространств.",
+    link: "News.html",
+  },
+  {
+    image: "Photos-for-Site/photo_2026-03-16_17-24-06.jpg",
+    title: "Синоптики рассказали, какой будет погода в Узбекистане в ближайшие дни",
+    text: "По прогнозу, в отдельных районах возможны осадки и постепенное изменение температуры.",
+    link: "News.html",
+  },
+  {
+    image: "Photos-for-Site/photo_2026-03-15_13-43-45.jpg",
+    title: "В Ташкенте обсуждают новые подходы к регулированию трафика",
+    text: "Городские службы рассматривают дополнительные меры для снижения нагрузки на центр столицы.",
+    link: "News.html",
+  },
+  {
+    image: "Photos-for-Site/photo_2026-03-15_04-50-32.jpg",
+    title: "Цифровые сервисы для жителей страны продолжают расширять",
+    text: "Новые решения должны сделать доступ к информации и услугам более удобным и быстрым.",
+    link: "News.html",
+  },
+  {
+    image: "Photos-for-Site/file_69b7e2a2c8865_avif.avif",
+    title: "В регионах наметился рост интереса к локальным общественным проектам",
+    text: "Инициативы всё чаще ориентированы на комфортную городскую среду и вовлечение жителей.",
+    link: "News.html",
+  },
+  {
+    image: "Photos-for-Site/file_69b7ecdda2a38_avif.avif",
+    title: "В стране продолжают обсуждать меры по улучшению городской логистики",
+    text: "Эксперты отмечают важность комплексного подхода к транспортным и инфраструктурным решениям.",
+    link: "News.html",
+  },
+];
+
+const categoryMoreNewsData = [
+  {
+    image: "Photos-for-Site/photo_2026-03-16_11-58-02.jpg",
+    title: "В столице начали обновлять общественные пространства в нескольких районах",
+    text: "Новые проекты затрагивают благоустройство улиц, озеленение и модернизацию городской среды.",
+    link: "News.html",
+  },
+  {
+    image: "Photos-for-Site/photo_2026-03-16_13-50-12.jpg",
+    title: "В Узбекистане усилили внимание к вопросам транспортной инфраструктуры",
+    text: "Речь идёт о развитии магистралей, обновлении узлов и повышении удобства для жителей.",
+    link: "News.html",
+  },
+  {
+    image: "Photos-for-Site/photo_2026-03-16_17-10-58.jpg",
+    title: "В ряде регионов страны продолжают запускать новые городские инициативы",
+    text: "Местные проекты направлены на повышение качества жизни и развитие общественных пространств.",
+    link: "News.html",
+  },
+  {
+    image: "Photos-for-Site/photo_2026-03-16_17-24-06.jpg",
+    title: "Синоптики рассказали, какой будет погода в Узбекистане в ближайшие дни",
+    text: "По прогнозу, в отдельных районах возможны осадки и постепенное изменение температуры.",
+    link: "News.html",
+  },
+  {
+    image: "Photos-for-Site/photo_2026-03-15_13-43-45.jpg",
+    title: "В Ташкенте обсуждают новые подходы к регулированию трафика",
+    text: "Городские службы рассматривают дополнительные меры для снижения нагрузки на центр столицы.",
+    link: "News.html",
+  },
+  {
+    image: "Photos-for-Site/photo_2026-03-15_04-50-32.jpg",
+    title: "Цифровые сервисы для жителей страны продолжают расширять",
+    text: "Новые решения должны сделать доступ к информации и услугам более удобным и быстрым.",
+    link: "News.html",
+  },
+  {
+    image: "Photos-for-Site/file_69b7e2a2c8865_avif.avif",
+    title: "В регионах наметился рост интереса к локальным общественным проектам",
+    text: "Инициативы всё чаще ориентированы на комфортную городскую среду и вовлечение жителей.",
+    link: "News.html",
+  },
+  {
+    image: "Photos-for-Site/file_69b7ecdda2a38_avif.avif",
+    title: "В стране продолжают обсуждать меры по улучшению городской логистики",
+    text: "Эксперты отмечают важность комплексного подхода к транспортным и инфраструктурным решениям.",
+    link: "News.html",
+  },
+];
+
+let loadedNewsCount = 0;
+const newsBatchSize = 4;
+
+function createHomeOrArticleMoreNewsCard(item) {
+  const article = document.createElement("article");
+  article.className = "more-news-card";
+
+  article.innerHTML = `
+    <a href="${item.link}" class="more-news-card-link" aria-label="Открыть новость">
+      <img src="${item.image}" alt="${escapeHtml(item.title)}" />
+      <h3>${escapeHtml(item.title)}</h3>
+      <p>${escapeHtml(item.text)}</p>
+    </a>
+  `;
+
+  return article;
+}
+
+function createCategoryNewsCard(item) {
+  const article = document.createElement("article");
+  article.className = "category-news-card";
+
+  article.innerHTML = `
+    <a href="${item.link}" class="category-news-card-link" aria-label="Открыть новость">
+      <img src="${item.image}" alt="${escapeHtml(item.title)}" />
+      <h3>${escapeHtml(item.title)}</h3>
+      <p>${escapeHtml(item.text)}</p>
+    </a>
+  `;
+
+  return article;
+}
+
+function loadMoreNews() {
+  if (!loadMoreNewsBtn) return;
+
+  if ((pageType === "home" || pageType === "article") && moreNewsGrid) {
+    const nextItems = homeMoreNewsData.slice(
+      loadedNewsCount,
+      loadedNewsCount + newsBatchSize
+    );
+
+    nextItems.forEach((item) => {
+      moreNewsGrid.appendChild(createHomeOrArticleMoreNewsCard(item));
+    });
+
+    loadedNewsCount += nextItems.length;
+
+    if (loadedNewsCount >= homeMoreNewsData.length) {
+      loadMoreNewsBtn.style.display = "none";
+    }
+
+    return;
+  }
+
+  if (pageType === "category" && categoryNewsGrid) {
+    const nextItems = categoryMoreNewsData.slice(
+      loadedNewsCount,
+      loadedNewsCount + newsBatchSize
+    );
+
+    nextItems.forEach((item) => {
+      categoryNewsGrid.appendChild(createCategoryNewsCard(item));
+    });
+
+    loadedNewsCount += nextItems.length;
+
+    if (loadedNewsCount >= categoryMoreNewsData.length) {
+      loadMoreNewsBtn.style.display = "none";
+    }
+  }
+}
+
+if (loadMoreNewsBtn) {
+  loadMoreNewsBtn.addEventListener("click", loadMoreNews);
+}
+
+// =================== ОБЩИЕ СЛУШАТЕЛИ ===================
+
+document.addEventListener("click", (e) => {
+  if (
+    !isMobileWidth() &&
+    desktopSearchBar &&
+    searchToggle &&
+    desktopSearchBar.classList.contains("active") &&
+    !desktopSearchBar.contains(e.target) &&
+    !searchToggle.contains(e.target)
+  ) {
+    closeDesktopSearch();
+  }
+
+  if (shareBox && !shareBox.contains(e.target)) {
+    closeShareDropdown();
   }
 });
 
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 700) {
+    closeBurgerMenu();
+  }
+
+  if (window.innerWidth <= 700) {
+    closeDesktopSearch();
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeDesktopSearch();
+    closeAuthModal();
+    closeShareDropdown();
+    closeReelsModal();
+  }
+});

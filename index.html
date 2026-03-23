@@ -6,6 +6,12 @@
     <link rel="icon" href="Icons/Logo_Min.png" type="image/png" />
     <title>Дайджест — новости Узбекистана</title>
     <link rel="stylesheet" href="style.css" />
+
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body>
@@ -37,16 +43,6 @@
               <button type="submit" class="mobile-search-btn">Поиск</button>
             </div>
           </form>
-          
-
-          <button
-            class="mobile-auth-trigger"
-            id="mobileAuthTrigger"
-            type="button"
-            aria-label="Открыть вход и регистрацию"
-          >
-            Вход / Регистрация
-          </button>
         </nav>
 
         <div class="header-actions">
@@ -61,18 +57,6 @@
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <circle cx="11" cy="11" r="7"></circle>
               <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
-            </svg>
-          </button>
-
-          <button
-            class="auth-toggle"
-            id="authToggle"
-            type="button"
-            aria-label="Открыть вход и регистрацию"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"></path>
-              <path d="M4 20a8 8 0 0 1 16 0"></path>
             </svg>
           </button>
 
@@ -312,14 +296,19 @@
       </section>
 
       <section class="horizontal-ad" aria-label="Реклама">
-        <div class="horizontal-ad-box">
-          <a href="#" class="horizontal-ad-link" aria-label="Открыть рекламу">
-            <img
-              src="AdPlaceholder3.jpg"
-              alt="Реклама"
-              class="horizontal-ad-img"
-            />
-          </a>
+        <div class="container">
+          <div class="horizontal-ad-box">
+            <div class="adsense-horizontal-wrap">
+              <ins
+                class="adsbygoogle adsense-horizontal"
+                style="display: block"
+                data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                data-ad-slot="1111111111"
+                data-ad-format="horizontal"
+                data-full-width-responsive="true"
+              ></ins>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -624,12 +613,19 @@
         </div>
       </section>
 
-      <section class="horizontal-ad">
+      <section class="horizontal-ad" aria-label="Реклама">
         <div class="container">
           <div class="horizontal-ad-box">
-            <a href="#" class="horizontal-ad-link">
-              <img src="ToporAd.jpg" alt="Реклама" class="horizontal-ad-img" />
-            </a>
+            <div class="adsense-horizontal-wrap">
+              <ins
+                class="adsbygoogle adsense-horizontal"
+                style="display: block"
+                data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                data-ad-slot="2222222222"
+                data-ad-format="horizontal"
+                data-full-width-responsive="true"
+              ></ins>
+            </div>
           </div>
         </div>
       </section>
@@ -850,140 +846,16 @@
       </div>
     </div>
 
-    <div class="auth-modal" id="authModal" aria-hidden="true">
-      <div class="auth-modal-backdrop" id="authModalBackdrop"></div>
-
-      <div
-        class="auth-modal-dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Вход и регистрация"
-      >
-        <button
-          class="auth-modal-close"
-          id="authModalClose"
-          type="button"
-          aria-label="Закрыть"
-        >
-          ✕
-        </button>
-
-        <div class="auth-modal-card">
-          <div class="auth-tabs">
-            <button
-              class="auth-tab active"
-              id="loginTab"
-              type="button"
-              data-auth-tab="login"
-            >
-              Вход
-            </button>
-            <button
-              class="auth-tab"
-              id="registerTab"
-              type="button"
-              data-auth-tab="register"
-            >
-              Регистрация
-            </button>
-          </div>
-
-          <div class="auth-panels">
-            <div class="auth-panel active" id="loginPanel">
-              <h3>С возвращением</h3>
-              <p class="auth-subtitle">Войдите в аккаунт, чтобы продолжить</p>
-
-              <form class="auth-form" id="loginForm">
-                <input
-                  type="email"
-                  class="auth-input"
-                  placeholder="Email"
-                  required
-                />
-                <input
-                  type="password"
-                  class="auth-input"
-                  placeholder="Пароль"
-                  required
-                />
-                <button type="submit" class="auth-submit-btn">Войти</button>
-              </form>
-
-              <div class="auth-divider">
-                <span>или через соцсети</span>
-              </div>
-
-              <div class="auth-socials">
-                <a href="#" class="auth-social-btn auth-google">
-                  <span class="auth-social-icon"></span>
-                  Google
-                </a>
-
-                <a href="#" class="auth-social-btn auth-facebook">
-                  <span class="auth-social-icon"></span>
-                  Facebook
-                </a>
-
-                <a href="#" class="auth-social-btn auth-telegram">
-                  <span class="auth-social-icon"></span>
-                  Telegram
-                </a>
-              </div>
-            </div>
-
-            <div class="auth-panel" id="registerPanel">
-              <h3>Создать аккаунт</h3>
-              <p class="auth-subtitle">Зарегистрируйтесь за минуту</p>
-
-              <form class="auth-form" id="registerForm">
-                <input
-                  type="text"
-                  class="auth-input"
-                  placeholder="Имя"
-                  required
-                />
-                <input
-                  type="email"
-                  class="auth-input"
-                  placeholder="Email"
-                  required
-                />
-                <input
-                  type="password"
-                  class="auth-input"
-                  placeholder="Пароль"
-                  required
-                />
-                <button type="submit" class="auth-submit-btn">
-                  Зарегистрироваться
-                </button>
-              </form>
-
-              <div class="auth-divider">
-                <span>или через соцсети</span>
-              </div>
-
-              <div class="auth-socials">
-                <a href="#" class="auth-social-btn auth-google">
-                  <span class="auth-social-icon"></span>
-                  Google
-                </a>
-
-                <a href="#" class="auth-social-btn auth-facebook">
-                  <span class="auth-social-icon"></span>
-                  Facebook
-                </a>
-
-                <a href="#" class="auth-social-btn auth-telegram">
-                  <span class="auth-social-icon"></span>
-                  Telegram
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const ads = document.querySelectorAll(".adsbygoogle");
+        ads.forEach(() => {
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          } catch (e) {}
+        });
+      });
+    </script>
 
     <script src="index.js"></script>
   </body>
