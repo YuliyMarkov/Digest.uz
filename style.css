@@ -1775,15 +1775,15 @@ body.dark-theme .reels-section {
   }
 
   .header-container {
-    min-height: 92px;
+    min-height: 94px;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-rows: 52px 28px;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-rows: 52px auto;
     align-items: center;
     column-gap: 10px;
-    row-gap: 0;
+    row-gap: 6px;
     padding-top: 8px;
-    padding-bottom: 8px;
+    padding-bottom: 10px;
   }
 
   .logo {
@@ -1791,7 +1791,7 @@ body.dark-theme .reels-section {
     grid-row: 1;
     min-width: 0;
     overflow: hidden;
-    align-self: end;
+    align-self: center;
   }
 
   .logo img {
@@ -1817,12 +1817,13 @@ body.dark-theme .reels-section {
     grid-row: 2;
     justify-self: start;
     align-self: start;
-    gap: 10px;
+    gap: 12px;
+    padding-top: 2px;
   }
 
   .social {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
   }
 
   .theme-switch-wrapper {
@@ -1849,18 +1850,23 @@ body.dark-theme .reels-section {
   }
 
   .burger {
-    grid-column: 2 / 3;
-    grid-row: 2;
+    grid-column: 3 / 4;
+    grid-row: 1;
     justify-self: end;
-    align-self: start;
+    align-self: center;
     display: flex;
     width: 40px;
     height: 40px;
+    border-radius: 10px;
+  }
+
+  .burger:hover {
+    background: rgba(255, 255, 255, 0.08);
   }
 
   .nav {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 6px);
     left: 16px;
     right: 16px;
     width: auto;
@@ -1872,7 +1878,7 @@ body.dark-theme .reels-section {
     display: none;
     z-index: 1000;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
-    border-radius: 0 0 12px 12px;
+    border-radius: 14px;
   }
 
   .nav.active {
@@ -2060,11 +2066,13 @@ body.dark-theme .reels-section {
   }
 
   .header-container {
-    min-height: 88px;
-    grid-template-rows: 48px 26px;
+    min-height: 86px;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-rows: 46px auto;
     column-gap: 8px;
+    row-gap: 6px;
     padding-top: 7px;
-    padding-bottom: 7px;
+    padding-bottom: 9px;
   }
 
   .logo img {
@@ -2072,12 +2080,12 @@ body.dark-theme .reels-section {
   }
 
   .socials {
-    gap: 8px;
+    gap: 10px;
   }
 
   .social {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
   }
 
   .mobile-search-row {
