@@ -348,58 +348,113 @@ if (commentForm && commentName && commentText && commentsList) {
   updateCommentsCount();
 }
 
-// =================== ГЛАВНАЯ: TOP NEWS SLIDER ===================
+// ================= TOP NEWS SLIDER =================
 
-const topNewsTrack = $("topNewsTrack");
-const topNewsPrev = $("topNewsPrev");
-const topNewsNext = $("topNewsNext");
-const topNewsDotsWrap = $("topNewsDots");
+const topNewsTrack = document.getElementById("topNewsTrack");
+const topNewsDots = document.querySelectorAll(".top-news-dot");
+const topNewsPrev = document.getElementById("topNewsPrev");
+const topNewsNext = document.getElementById("topNewsNext");
 
-if (topNewsTrack) {
-  const slides = Array.from(topNewsTrack.querySelectorAll(".top-slide"));
+if (topNewsTrack && topNewsDots.length) {
+  const slides = Array.from(topNewsTrack.children);
   let currentSlide = 0;
+  let autoplayInterval = null;
+  let touchStartX = 0;
+  let touchEndX = 0;
 
-  if (topNewsDotsWrap && !topNewsDotsWrap.children.length) {
-    slides.forEach((_, index) => {
-      const dot = document.createElement("button");
-      dot.type = "button";
-      dot.className = "top-news-dot";
-      dot.setAttribute("aria-label", `Перейти к слайду ${index + 1}`);
-      topNewsDotsWrap.appendChild(dot);
-    });
-  }
-
-  const dots = topNewsDotsWrap
-    ? Array.from(topNewsDotsWrap.querySelectorAll(".top-news-dot"))
-    : [];
-
-  function renderTopNewsSlider() {
+  const updateSlider = () => {
     topNewsTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-    dots.forEach((dot, index) => {
+    topNewsDots.forEach((dot, index) => {
       dot.classList.toggle("active", index === currentSlide);
     });
-  }
+  };
 
-  function goToTopSlide(index) {
-    if (!slides.length) return;
-    currentSlide = (index + slides.length) % slides.length;
-    renderTopNewsSlider();
-  }
+  const goToSlide = (index) => {
+    currentSlide = index;
+    if (currentSlide < 0) currentSlide = slides.length - 1;
+    if (currentSlide >= slides.length) currentSlide = 0;
+    updateSlider();
+  };
+
+  const nextSlide = () => {
+    goToSlide(currentSlide + 1);
+  };
+
+  const prevSlide = () => {
+    goToSlide(currentSlide - 1);
+  };
+
+  const startAutoplay = () => {
+    stopAutoplay();
+    autoplayInterval = setInterval(() => {
+      nextSlide();
+    }, 4500);
+  };
+
+  const stopAutoplay = () => {
+    if (autoplayInterval) {
+      clearInterval(autoplayInterval);
+      autoplayInterval = null;
+    }
+  };
 
   if (topNewsPrev) {
-    topNewsPrev.addEventListener("click", () => goToTopSlide(currentSlide - 1));
+    topNewsPrev.addEventListener("click", () => {
+      prevSlide();
+      startAutoplay();
+    });
   }
 
   if (topNewsNext) {
-    topNewsNext.addEventListener("click", () => goToTopSlide(currentSlide + 1));
+    topNewsNext.addEventListener("click", () => {
+      nextSlide();
+      startAutoplay();
+    });
   }
 
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => goToTopSlide(index));
+  topNewsDots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      goToSlide(index);
+      startAutoplay();
+    });
   });
 
-  renderTopNewsSlider();
+  // Свайп для мобильной версии
+  topNewsTrack.addEventListener(
+    "touchstart",
+    (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoplay();
+    },
+    { passive: true }
+  );
+
+  topNewsTrack.addEventListener(
+    "touchend",
+    (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const swipeDistance = touchEndX - touchStartX;
+
+      if (Math.abs(swipeDistance) > 50) {
+        if (swipeDistance < 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+
+      startAutoplay();
+    },
+    { passive: true }
+  );
+
+  // Пауза при наведении на десктопе
+  topNewsTrack.addEventListener("mouseenter", stopAutoplay);
+  topNewsTrack.addEventListener("mouseleave", startAutoplay);
+
+  updateSlider();
+  startAutoplay();
 }
 
 // =================== ГЛАВНАЯ: REELS ===================

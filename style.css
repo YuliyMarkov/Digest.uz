@@ -2119,15 +2119,15 @@ body.dark-theme .post-share-threads {
   }
 
   .header-container {
-    min-height: 94px;
+    min-height: 64px;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto auto auto;
-    grid-template-rows: 52px auto;
+    grid-template-rows: auto;
     align-items: center;
     column-gap: 8px;
-    row-gap: 6px;
-    padding-top: 8px;
-    padding-bottom: 10px;
+    row-gap: 0;
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
 
   .logo {
@@ -2541,13 +2541,13 @@ body.dark-theme .post-share-threads {
   }
 
   .header-container {
-    min-height: 86px;
+    min-height: 58px;
     grid-template-columns: minmax(0, 1fr) auto auto auto;
-    grid-template-rows: 46px auto;
+    grid-template-rows: auto;
     column-gap: 6px;
-    row-gap: 6px;
-    padding-top: 7px;
-    padding-bottom: 9px;
+    row-gap: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   .logo img {
