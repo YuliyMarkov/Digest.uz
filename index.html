@@ -52,17 +52,6 @@
               </a>
 
               <a
-                href="https://www.tiktok.com/@digest.uzbekistan"
-                class="mobile-social-card"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="TikTok"
-              >
-                <span class="mobile-social-card-icon tiktok"></span>
-                <span class="mobile-social-card-text">TikTok</span>
-              </a>
-
-              <a
                 href="https://www.youtube.com/@digest.uzbekistan"
                 class="mobile-social-card"
                 target="_blank"
@@ -87,6 +76,32 @@
               <button type="submit" class="mobile-search-btn">Поиск</button>
             </div>
           </form>
+
+          <div class="mobile-lang-switch" aria-label="Переключение языка">
+            <button
+              class="lang-btn active"
+              type="button"
+              data-lang="ru"
+              aria-label="Русский"
+            >
+              <span class="lang-flag-img">
+                <img src="Icons/Flag_RU.png" alt="RU" />
+              </span>
+              <span>RU</span>
+            </button>
+
+            <button
+              class="lang-btn"
+              type="button"
+              data-lang="uz"
+              aria-label="O‘zbekcha"
+            >
+              <span class="lang-flag-img">
+                <img src="Icons/Flag_UZ.png" alt="UZ" />
+              </span>
+              <span>UZ</span>
+            </button>
+          </div>
         </nav>
 
         <div class="header-actions">
@@ -120,19 +135,38 @@
               rel="noopener noreferrer"
             ></a>
             <a
-              href="https://www.tiktok.com/@digest.uzbekistan"
-              class="social tiktok"
-              aria-label="TikTok"
-              target="_blank"
-              rel="noopener noreferrer"
-            ></a>
-            <a
               href="https://www.youtube.com/@digest.uzbekistan"
               class="social youtube"
               aria-label="YouTube"
               target="_blank"
               rel="noopener noreferrer"
             ></a>
+          </div>
+
+          <div class="lang-switch" aria-label="Переключение языка">
+            <button
+              class="lang-btn active"
+              type="button"
+              data-lang="ru"
+              aria-label="Русский"
+            >
+              <span class="lang-flag-img">
+                <img src="Icons/Flag_RU.png" alt="RU" />
+              </span>
+              <span>RU</span>
+            </button>
+
+            <button
+              class="lang-btn"
+              type="button"
+              data-lang="uz"
+              aria-label="O‘zbekcha"
+            >
+              <span class="lang-flag-img">
+                <img src="Icons/Flag_UZ.png" alt="UZ" />
+              </span>
+              <span>UZ</span>
+            </button>
           </div>
 
           <div class="theme-switch-wrapper">
@@ -252,7 +286,23 @@
               </button>
             </div>
 
-            <div class="top-news-dots" id="topNewsDots"></div>
+            <div class="top-news-dots" id="topNewsDots">
+              <button
+                class="top-news-dot active"
+                type="button"
+                aria-label="Перейти к слайду 1"
+              ></button>
+              <button
+                class="top-news-dot"
+                type="button"
+                aria-label="Перейти к слайду 2"
+              ></button>
+              <button
+                class="top-news-dot"
+                type="button"
+                aria-label="Перейти к слайду 3"
+              ></button>
+            </div>
           </div>
 
           <aside class="top-news-sidebar">
@@ -412,19 +462,25 @@
                 <button
                   class="reels-card-preview"
                   type="button"
-                  data-video="https://www.instagram.com/p/EXAMPLE_1/embed"
-                  aria-label="Открыть видео"
+                  data-video="https://www.instagram.com/p/DV8gBEZAux0/embed"
+                  aria-label="Смотреть видео"
                 >
-                  <div class="reels-card-image">
-                    <img src="Reels/reel-1.jpg" alt="Видео" />
-                  </div>
-                  <div class="reels-card-play">▶</div>
+                  <span class="reels-card-image">
+                    <img
+                      src="Reels/Darhan.png"
+                      alt="Видео Digest"
+                      loading="lazy"
+                    />
+                  </span>
+                  <span class="reels-card-play">▶</span>
                 </button>
+
                 <a
-                  href="https://www.instagram.com/digest.uzbekistan/"
                   class="reels-card-link"
+                  href="https://www.instagram.com/digest.uzbekistan/"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
+                  aria-label="Открыть видео в Instagram"
                 >
                   Instagram
                 </a>
@@ -436,19 +492,25 @@
                 <button
                   class="reels-card-preview"
                   type="button"
-                  data-video="https://www.instagram.com/p/EXAMPLE_2/embed"
-                  aria-label="Открыть видео"
+                  data-video="https://www.instagram.com/p/DV8XmoIgmVh/embed"
+                  aria-label="Смотреть видео"
                 >
-                  <div class="reels-card-image">
-                    <img src="Reels/reel-2.jpg" alt="Видео" />
-                  </div>
-                  <div class="reels-card-play">▶</div>
+                  <span class="reels-card-image">
+                    <img
+                      src="Reels/Gaz.png"
+                      alt="Видео Digest"
+                      loading="lazy"
+                    />
+                  </span>
+                  <span class="reels-card-play">▶</span>
                 </button>
+
                 <a
-                  href="https://www.instagram.com/digest.uzbekistan/"
                   class="reels-card-link"
+                  href="https://www.instagram.com/digest.uzbekistan/"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
+                  aria-label="Открыть видео в Instagram"
                 >
                   Instagram
                 </a>
@@ -460,31 +522,98 @@
                 <button
                   class="reels-card-preview"
                   type="button"
-                  data-video="https://www.instagram.com/p/EXAMPLE_3/embed"
-                  aria-label="Открыть видео"
+                  data-video="https://www.instagram.com/p/DV8BO1wAu41/embed"
+                  aria-label="Смотреть видео"
                 >
-                  <div class="reels-card-image">
-                    <img src="Reels/reel-3.jpg" alt="Видео" />
-                  </div>
-                  <div class="reels-card-play">▶</div>
+                  <span class="reels-card-image">
+                    <img
+                      src="Reels/Most.png"
+                      alt="Видео Digest"
+                      loading="lazy"
+                    />
+                  </span>
+                  <span class="reels-card-play">▶</span>
                 </button>
+
                 <a
-                  href="https://www.instagram.com/digest.uzbekistan/"
                   class="reels-card-link"
+                  href="https://www.instagram.com/digest.uzbekistan/"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
+                  aria-label="Открыть видео в Instagram"
                 >
                   Instagram
                 </a>
               </div>
             </li>
 
-            <li class="reels-list-item-more">
+            <li class="reels-list-item">
+              <div class="reels-card">
+                <button
+                  class="reels-card-preview"
+                  type="button"
+                  data-video="https://www.instagram.com/p/DV76ofGg3ut/embed"
+                  aria-label="Смотреть видео"
+                >
+                  <span class="reels-card-image">
+                    <img
+                      src="Reels/Pagani.png"
+                      alt="Видео Digest"
+                      loading="lazy"
+                    />
+                  </span>
+                  <span class="reels-card-play">▶</span>
+                </button>
+
+                <a
+                  class="reels-card-link"
+                  href="https://www.instagram.com/digest.uzbekistan/"
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  aria-label="Открыть видео в Instagram"
+                >
+                  Instagram
+                </a>
+              </div>
+            </li>
+
+            <li class="reels-list-item">
+              <div class="reels-card">
+                <button
+                  class="reels-card-preview"
+                  type="button"
+                  data-video="https://www.instagram.com/p/DV7yYsCAh22/embed"
+                  aria-label="Смотреть видео"
+                >
+                  <span class="reels-card-image">
+                    <img
+                      src="Reels/Pozhar.jpg"
+                      alt="Видео Digest"
+                      loading="lazy"
+                    />
+                  </span>
+                  <span class="reels-card-play">▶</span>
+                </button>
+
+                <a
+                  class="reels-card-link"
+                  href="https://www.instagram.com/digest.uzbekistan/"
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  aria-label="Открыть видео в Instagram"
+                >
+                  Instagram
+                </a>
+              </div>
+            </li>
+
+            <li class="reels-list-item reels-list-item-more">
               <a
-                href="https://www.instagram.com/digest.uzbekistan/"
                 class="reels-more-card"
+                href="https://www.instagram.com/digest.uzbekistan/"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
+                aria-label="Смотреть все видео в Instagram"
               >
                 <span>Смотреть все видео</span>
                 <span class="reels-more-arrow">→</span>
@@ -679,13 +808,6 @@
             aria-label="Instagram"
           ></a>
           <a
-            href="https://www.tiktok.com/@digest.uzbekistan"
-            class="footer-social tiktok"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="TikTok"
-          ></a>
-          <a
             href="https://www.youtube.com/@digest.uzbekistan"
             class="footer-social youtube"
             target="_blank"
@@ -714,7 +836,22 @@
           ✕
         </button>
 
-        <div class="reels-modal-content" id="reelsModalContent"></div>
+        <div class="reels-modal-content" id="reelsModalContent">
+          <iframe
+            id="reelsModalFrame"
+            src=""
+            title="Instagram Reel"
+            loading="lazy"
+            allow="
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              picture-in-picture;
+              web-share;
+            "
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
     </div>
 

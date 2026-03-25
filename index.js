@@ -11,11 +11,57 @@ function isMobileWidth() {
 // =================== ТЁМНАЯ ТЕМА ===================
 
 const themeToggle = $("theme-toggle");
+const savedTheme = localStorage.getItem("site-theme");
+
+if (savedTheme === "dark") {
+  document.body.classList.add("dark-theme");
+  if (themeToggle) {
+    themeToggle.checked = true;
+  }
+}
 
 if (themeToggle) {
   themeToggle.addEventListener("change", () => {
-    document.body.classList.toggle("dark-theme", themeToggle.checked);
+    const isDark = themeToggle.checked;
+    document.body.classList.toggle("dark-theme", isDark);
+    localStorage.setItem("site-theme", isDark ? "dark" : "light");
   });
+}
+
+// =================== ЯЗЫК ===================
+
+// =================== ЯЗЫК ===================
+
+const langButtons = document.querySelectorAll(".lang-btn");
+const LANG_STORAGE_KEY = "site-language";
+const DEFAULT_LANG = "ru";
+
+function applyLanguage(lang) {
+  const normalizedLang = lang === "uz" ? "uz" : "ru";
+
+  document.documentElement.lang = normalizedLang;
+
+  langButtons.forEach((button) => {
+    button.classList.toggle("active", button.dataset.lang === normalizedLang);
+  });
+
+  localStorage.setItem(LANG_STORAGE_KEY, normalizedLang);
+}
+
+function initLanguage() {
+  const savedLang = localStorage.getItem(LANG_STORAGE_KEY) || DEFAULT_LANG;
+  applyLanguage(savedLang);
+}
+
+if (langButtons.length) {
+  langButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const selectedLang = button.dataset.lang;
+      applyLanguage(selectedLang);
+    });
+  });
+
+  initLanguage();
 }
 
 // =================== БУРГЕР ===================
@@ -313,11 +359,21 @@ const topNewsDotsWrap = $("topNewsDots");
 
 if (topNewsTrack) {
   const slides = Array.from(topNewsTrack.querySelectorAll(".top-slide"));
+  let currentSlide = 0;
+
+  if (topNewsDotsWrap && !topNewsDotsWrap.children.length) {
+    slides.forEach((_, index) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "top-news-dot";
+      dot.setAttribute("aria-label", `Перейти к слайду ${index + 1}`);
+      topNewsDotsWrap.appendChild(dot);
+    });
+  }
+
   const dots = topNewsDotsWrap
     ? Array.from(topNewsDotsWrap.querySelectorAll(".top-news-dot"))
     : [];
-
-  let currentSlide = 0;
 
   function renderTopNewsSlider() {
     topNewsTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
@@ -358,8 +414,16 @@ const reelsNext = $("reelsNext");
 if (reelsViewport && reelsTrack && reelsPrev && reelsNext) {
   let reelsIndex = 0;
 
+  function getReelsItems() {
+    return reelsTrack.querySelectorAll(
+      ".reels-list-item, .reels-list-item-more",
+    );
+  }
+
   function getReelsStep() {
-    const firstItem = reelsTrack.querySelector(".reels-list-item, .reels-list-item-more");
+    const firstItem = reelsTrack.querySelector(
+      ".reels-list-item, .reels-list-item-more",
+    );
     if (!firstItem) return 0;
 
     const itemWidth = firstItem.getBoundingClientRect().width;
@@ -376,7 +440,7 @@ if (reelsViewport && reelsTrack && reelsPrev && reelsNext) {
   }
 
   function getMaxReelsIndex() {
-    const items = reelsTrack.querySelectorAll(".reels-list-item, .reels-list-item-more").length;
+    const items = getReelsItems().length;
     return Math.max(0, items - getVisibleReelsCount());
   }
 
@@ -421,24 +485,36 @@ if (reelsViewport && reelsTrack && reelsPrev && reelsNext) {
 const reelsModal = $("reelsModal");
 const reelsModalBackdrop = $("reelsModalBackdrop");
 const reelsModalClose = $("reelsModalClose");
-const reelsModalFrame = $("reelsModalFrame");
-const reelsPreviewButtons = document.querySelectorAll(".reels-card-preview[data-video]");
+const reelsModalContent = $("reelsModalContent");
+const reelsPreviewButtons = document.querySelectorAll(
+  ".reels-card-preview[data-video]",
+);
 
 function openReelsModal(videoUrl) {
-  if (!reelsModal || !reelsModalFrame) return;
+  if (!reelsModal || !reelsModalContent || !videoUrl) return;
+
+  reelsModalContent.innerHTML = `
+    <iframe
+      src="${videoUrl}"
+      title="Instagram Reel"
+      allow="autoplay; encrypted-media; picture-in-picture; clipboard-write"
+      allowfullscreen
+      loading="eager"
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></iframe>
+  `;
 
   reelsModal.classList.add("active");
   reelsModal.setAttribute("aria-hidden", "false");
-  reelsModalFrame.src = videoUrl;
   document.body.style.overflow = "hidden";
 }
 
 function closeReelsModal() {
-  if (!reelsModal || !reelsModalFrame) return;
+  if (!reelsModal || !reelsModalContent) return;
 
   reelsModal.classList.remove("active");
   reelsModal.setAttribute("aria-hidden", "true");
-  reelsModalFrame.src = "";
+  reelsModalContent.innerHTML = "";
   document.body.style.overflow = "";
 }
 
@@ -472,25 +548,29 @@ const pageType = document.querySelector(".article-page")
 const homeMoreNewsData = [
   {
     image: "Photos-for-Site/photo_2026-03-16_11-58-02.jpg",
-    title: "В столице начали обновлять общественные пространства в нескольких районах",
+    title:
+      "В столице начали обновлять общественные пространства в нескольких районах",
     text: "Новые проекты затрагивают благоустройство улиц, озеленение и модернизацию городской среды.",
     link: "News.html",
   },
   {
     image: "Photos-for-Site/photo_2026-03-16_13-50-12.jpg",
-    title: "В Узбекистане усилили внимание к вопросам транспортной инфраструктуры",
+    title:
+      "В Узбекистане усилили внимание к вопросам транспортной инфраструктуры",
     text: "Речь идёт о развитии магистралей, обновлении узлов и повышении удобства для жителей.",
     link: "News.html",
   },
   {
     image: "Photos-for-Site/photo_2026-03-16_17-10-58.jpg",
-    title: "В ряде регионов страны продолжают запускать новые городские инициативы",
+    title:
+      "В ряде регионов страны продолжают запускать новые городские инициативы",
     text: "Местные проекты направлены на повышение качества жизни и развитие общественных пространств.",
     link: "News.html",
   },
   {
     image: "Photos-for-Site/photo_2026-03-16_17-24-06.jpg",
-    title: "Синоптики рассказали, какой будет погода в Узбекистане в ближайшие дни",
+    title:
+      "Синоптики рассказали, какой будет погода в Узбекистане в ближайшие дни",
     text: "По прогнозу, в отдельных районах возможны осадки и постепенное изменение температуры.",
     link: "News.html",
   },
@@ -508,13 +588,15 @@ const homeMoreNewsData = [
   },
   {
     image: "Photos-for-Site/file_69b7e2a2c8865_avif.avif",
-    title: "В регионах наметился рост интереса к локальным общественным проектам",
+    title:
+      "В регионах наметился рост интереса к локальным общественным проектам",
     text: "Инициативы всё чаще ориентированы на комфортную городскую среду и вовлечение жителей.",
     link: "News.html",
   },
   {
     image: "Photos-for-Site/file_69b7ecdda2a38_avif.avif",
-    title: "В стране продолжают обсуждать меры по улучшению городской логистики",
+    title:
+      "В стране продолжают обсуждать меры по улучшению городской логистики",
     text: "Эксперты отмечают важность комплексного подхода к транспортным и инфраструктурным решениям.",
     link: "News.html",
   },
@@ -523,25 +605,29 @@ const homeMoreNewsData = [
 const categoryMoreNewsData = [
   {
     image: "Photos-for-Site/photo_2026-03-16_11-58-02.jpg",
-    title: "В столице начали обновлять общественные пространства в нескольких районах",
+    title:
+      "В столице начали обновлять общественные пространства в нескольких районах",
     text: "Новые проекты затрагивают благоустройство улиц, озеленение и модернизацию городской среды.",
     link: "News.html",
   },
   {
     image: "Photos-for-Site/photo_2026-03-16_13-50-12.jpg",
-    title: "В Узбекистане усилили внимание к вопросам транспортной инфраструктуры",
+    title:
+      "В Узбекистане усилили внимание к вопросам транспортной инфраструктуры",
     text: "Речь идёт о развитии магистралей, обновлении узлов и повышении удобства для жителей.",
     link: "News.html",
   },
   {
     image: "Photos-for-Site/photo_2026-03-16_17-10-58.jpg",
-    title: "В ряде регионов страны продолжают запускать новые городские инициативы",
+    title:
+      "В ряде регионов страны продолжают запускать новые городские инициативы",
     text: "Местные проекты направлены на повышение качества жизни и развитие общественных пространств.",
     link: "News.html",
   },
   {
     image: "Photos-for-Site/photo_2026-03-16_17-24-06.jpg",
-    title: "Синоптики рассказали, какой будет погода в Узбекистане в ближайшие дни",
+    title:
+      "Синоптики рассказали, какой будет погода в Узбекистане в ближайшие дни",
     text: "По прогнозу, в отдельных районах возможны осадки и постепенное изменение температуры.",
     link: "News.html",
   },
@@ -559,13 +645,15 @@ const categoryMoreNewsData = [
   },
   {
     image: "Photos-for-Site/file_69b7e2a2c8865_avif.avif",
-    title: "В регионах наметился рост интереса к локальным общественным проектам",
+    title:
+      "В регионах наметился рост интереса к локальным общественным проектам",
     text: "Инициативы всё чаще ориентированы на комфортную городскую среду и вовлечение жителей.",
     link: "News.html",
   },
   {
     image: "Photos-for-Site/file_69b7ecdda2a38_avif.avif",
-    title: "В стране продолжают обсуждать меры по улучшению городской логистики",
+    title:
+      "В стране продолжают обсуждать меры по улучшению городской логистики",
     text: "Эксперты отмечают важность комплексного подхода к транспортным и инфраструктурным решениям.",
     link: "News.html",
   },
@@ -610,7 +698,7 @@ function loadMoreNews() {
   if ((pageType === "home" || pageType === "article") && moreNewsGrid) {
     const nextItems = homeMoreNewsData.slice(
       loadedNewsCount,
-      loadedNewsCount + newsBatchSize
+      loadedNewsCount + newsBatchSize,
     );
 
     nextItems.forEach((item) => {
@@ -629,7 +717,7 @@ function loadMoreNews() {
   if (pageType === "category" && categoryNewsGrid) {
     const nextItems = categoryMoreNewsData.slice(
       loadedNewsCount,
-      loadedNewsCount + newsBatchSize
+      loadedNewsCount + newsBatchSize,
     );
 
     nextItems.forEach((item) => {
