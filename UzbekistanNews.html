@@ -82,32 +82,6 @@
               </a>
             </div>
           </div>
-
-          <div class="mobile-lang-switch" aria-label="Переключение языка">
-            <button
-              class="lang-btn active"
-              type="button"
-              data-lang="ru"
-              aria-label="Русский"
-            >
-              <span class="lang-flag-img">
-                <img src="Icons/Flag_RU.png" alt="RU" />
-              </span>
-              <span>RU</span>
-            </button>
-
-            <button
-              class="lang-btn"
-              type="button"
-              data-lang="uz"
-              aria-label="O‘zbekcha"
-            >
-              <span class="lang-flag-img">
-                <img src="Icons/Flag_UZ.png" alt="UZ" />
-              </span>
-              <span>UZ</span>
-            </button>
-          </div>
         </nav>
 
         <div class="header-actions">
@@ -149,24 +123,36 @@
             ></a>
           </div>
 
-          <div class="lang-switch" aria-label="Переключение языка">
+          <
+          <div class="lang-switch" aria-label="Переключение языка" role="group">
             <button
-              type="button"
               class="lang-btn active"
+              type="button"
               data-lang="ru"
+              aria-label="Русский"
               aria-pressed="true"
             >
-              <span class="lang-flag">🇷🇺</span>
-              <span class="lang-text">RU</span>
+              <span class="lang-btn-inner">
+                <span class="lang-flag-img">
+                  <img src="Icons/Flag_RU.png" alt="RU" />
+                </span>
+                <span class="lang-text">RU</span>
+              </span>
             </button>
+
             <button
-              type="button"
               class="lang-btn"
+              type="button"
               data-lang="uz"
+              aria-label="O‘zbekcha"
               aria-pressed="false"
             >
-              <span class="lang-flag">🇺🇿</span>
-              <span class="lang-text">UZ</span>
+              <span class="lang-btn-inner">
+                <span class="lang-flag-img">
+                  <img src="Icons/Flag_UZ.png" alt="UZ" />
+                </span>
+                <span class="lang-text">UZ</span>
+              </span>
             </button>
           </div>
 

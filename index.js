@@ -30,8 +30,6 @@ if (themeToggle) {
 
 // =================== ЯЗЫК ===================
 
-// =================== ЯЗЫК ===================
-
 const langButtons = document.querySelectorAll(".lang-btn");
 const LANG_STORAGE_KEY = "site-language";
 const DEFAULT_LANG = "ru";
